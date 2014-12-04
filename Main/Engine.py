@@ -5,8 +5,6 @@ Created on 10/mag/2014
 '''
 
 import pygame, sys
-import math
-from pygame.locals import *
 import logging
 import Main.LookupTable
 import Main.Constants
