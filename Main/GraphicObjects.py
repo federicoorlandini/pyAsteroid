@@ -7,6 +7,15 @@ import pygame
 import math
 import Main.Constants
 
+class Point2D(object):
+    x = 0
+    y = 0
+    
+    def __init__(self, x = 0, y = 0):
+        self.x = x
+        self.y = y
+        
+
 ''' Classe STARSHIP '''
 class StarShip(object):
     vertexs = ((0, 20), (-10, -10), (0, 0), (10, -10))
