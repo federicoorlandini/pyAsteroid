@@ -18,7 +18,9 @@ class Point2D(object):
 
 ''' Classe STARSHIP '''
 class StarShip(object):
-    vertexs = ((0, 20), (-10, -10), (0, 0), (10, -10))
+    vertexs = ((0, 20), 
+               (-10, -10), 
+               (0, 0), (10, -10))
     
     xPos = 0;
     yPos = 0;
@@ -44,6 +46,9 @@ class StarShip(object):
             newVertexs.append(newVertex)
         self.vertexs = tuple(newVertexs)
                 
-    def draw(self, drawSurface):
-        points = [(v[0] + self.xPos, v[1] + self.yPos) for v in self.vertexs]
+    def draw(self, viewport, drawSurface):
+        points = []
+        for v in self.vertexs:
+            p =  viewport.ToScreenCoordinate(v[0] + self.xPos, v[1] + self.yPos)
+            points.append((p.x, p.y))
         pygame.draw.lines(drawSurface, self.color, True, points, 1 )
