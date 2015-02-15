@@ -32,18 +32,32 @@ class Engine(object):
         elif event.type == pygame.locals.KEYDOWN:
             # Pulsante A
             if event.key == pygame.locals.K_a:
+                self.starship.rotate(-10)
+            # Pulsante D
+            if event.key == pygame.locals.K_d:
                 self.starship.rotate(10)
+            # Spacebar
+            if event.key == pygame.locals.K_SPACE:
+                newBullet = self.starship.fire();
+                self._graph_objects_list.append(newBullet)
                 
     def draw(self, viewport, display_surface):
         for obj in self._graph_objects_list:
             obj.draw(viewport, display_surface)
-                
+         
+    def updatePositions(self):
+        for obj in self._graph_objects_list:
+            obj.updatePosition()
+        
 ''' Asteroid '''
 def main():    
     pygame.init()
     
+    VIEWPORT_WIDTH = 500;
+    VIEWPORT_HEIGHT = 500;
+    
     ENGINE = Engine()
-    VIEWPORT = ViewPort.ViewPort(500, 400)
+    VIEWPORT = ViewPort.ViewPort(VIEWPORT_WIDTH, VIEWPORT_HEIGHT)
     
     pygame.key.set_repeat(10, 10)
         
@@ -51,9 +65,11 @@ def main():
     FPSCLOCK = pygame.time.Clock()
     
     # Drawing surface
-    DISPLAY_SURFACE = pygame.display.set_mode((500, 400))
+    DISPLAY_SURFACE = pygame.display.set_mode((VIEWPORT_WIDTH, VIEWPORT_HEIGHT))
         
     while True:
+        ENGINE.updatePositions()
+        
         for event in pygame.event.get():
             ENGINE.handle_keys(event)
                             
