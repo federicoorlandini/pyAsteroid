@@ -6,20 +6,18 @@ Created on 13/mag/2014
 import pygame
 import math
 import Main.Constants
-from Main.Geometry2D import Vertex2D
+from Main.Geometry2D import Vertex2D, Geometry2D
 
 ''' GraphicObject: the base class for every object on the screen '''     
 class GraphicObject(object):
-    position = Vertex2D(0, 0)
-    angle = 0
-    color = Main.Constants.WHITE;
+    _geometry2D = Geometry2D(Main.Constants.LOOKUP_TABLE)
+    _position = Vertex2D(0, 0)
+    _angle = 0
+    _color = Main.Constants.WHITE;
     
     def move(self, angle, length):
-        vectorX = length * math.cos(angle / 2 * math.pi)
-        vectorY = length * math.sin(angle / 2 * math.pi)
-        self.position.x += vectorX
-        self.position.y += vectorY
-        
+        _position = self._geometry2D.move(self._position, angle, length)
+    
 ''' Classe STARSHIP '''
 class StarShip(GraphicObject):
     vertexs = ((0, 20), 

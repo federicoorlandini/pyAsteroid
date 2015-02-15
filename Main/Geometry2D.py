@@ -19,17 +19,13 @@ class Geometry2D(object):
     '''
     classdocs
     '''
-    DELTA = 0.0001  # The minimum difference to consider two values as different
-
+    
     def __init__(self, lookupTable):
         '''
         Constructor
         '''
         self._lookupTable = lookupTable
         
-    def areEquals(self, value1, value2):
-        return abs(value1 - value2) <= self.DELTA
-    
     def rotate(self, vertex, angle):
         if(angle < 0):
             sinSign = -1

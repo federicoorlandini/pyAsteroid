@@ -7,7 +7,6 @@ Created on 10/mag/2014
 import pygame.locals
 import sys
 import logging
-import Main.LookupTable
 import Main.Constants
 import Main.GraphicObjects
 from Main import ViewPort
@@ -17,12 +16,10 @@ logging.getLogger().setLevel(logging.DEBUG)
 
    
 class Engine(object):
-    # Angle lookup table
-    ANGLE_TABLE = Main.LookupTable.CosSinTable()
     _graph_objects_list = []
        
     def __init__(self):
-        self.starship = Main.GraphicObjects.StarShip(0, 0, Main.Constants.WHITE, self.ANGLE_TABLE)
+        self.starship = Main.GraphicObjects.StarShip(0, 0, Main.Constants.WHITE, Main.Constants.LOOKUP_TABLE)
         self._graph_objects_list.append(self.starship)
     
     def handle_keys(self, event):
