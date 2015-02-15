@@ -6,13 +6,12 @@ Created on 04/dic/2014
 import unittest
 
 
-class Test(unittest.TestCase):
+class StarShipTests(unittest.TestCase):
 
 
     def testName(self):
-        pass
+        assert(False)
 
 
 if __name__ == "__main__":
-    #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

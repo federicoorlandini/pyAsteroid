@@ -7,10 +7,9 @@ import unittest
 
 import Main.ViewPort
 
-class Test(unittest.TestCase):
-
-
+class ViewPortTests(unittest.TestCase):
     def test_ToScreenCoordinate_shouldReturnTheCorrectCoordinate(self):
+        # center of the viewport
         x = 0
         y = 0
         width = 600;
@@ -18,9 +17,9 @@ class Test(unittest.TestCase):
         viewPort = Main.ViewPort.ViewPort(width = width, height = height)
         screenCoordinates = viewPort.ToScreenCoordinate(x, y)
         
+        # Should be mapped in the central point of the screen
         self.assertEqual(screenCoordinates.x, 300, "Wrong X coordinate")
         self.assertEqual(screenCoordinates.y, 200, "Wrong Y coordinate")
-        
+                
 if __name__ == "__main__":
-    #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
