@@ -4,37 +4,32 @@ Created on 13/mag/2014
 @author: Federico
 '''
 import pygame
-import math
 import Main.Constants
-from Main.Geometry2D import Vertex2D, Geometry2D
+from Main.Geometry2D import Point2D, Geometry2D
 
 ''' GraphicObject: the base class for every object on the screen '''     
 class GraphicObject(object):
     _geometry2D = Geometry2D(Main.Constants.LOOKUP_TABLE)
-    _position = Vertex2D(0, 0)
+    position = Point2D()
     _angle = 0
     _color = Main.Constants.WHITE;
-    
-    def move(self, angle, length):
-        _position = self._geometry2D.move(self._position, angle, length)
-    
-''' Classe STARSHIP '''
-class StarShip(GraphicObject):
-    vertexs = ((0, 20), 
-               (-10, -10), 
-               (0, 0), (10, -10))
-    
+    _vertexes = None
     _lookupTable = object()
     
-    def __init__(self, x, y, color, lookupTable):
+    def __init__(self, x = 0, y = 0, color = Main.Constants.WHITE, lookupTable = Main.Constants.LOOKUP_TABLE, vertexes = None):
         self.position.x = x
         self.position.y = y
-        self.color = color
+        self._color = color
         self._lookupTable = lookupTable
+        self._vertexes = vertexes
+        self.angle = 0
+        
+    def move(self, angle, length):
+        self.position = self._geometry2D.move(self.position, angle, length)
     
     def rotate(self, angleRelative):
         self.angle = int((self.angle + angleRelative) % 360)
-        newVertexs = []
+        newVertexes = []
         angleAbsolute = abs(angleRelative)
         
         if(angleRelative < 0):
@@ -42,22 +37,28 @@ class StarShip(GraphicObject):
         else:
             sinSign = 1
             
-        for vertex in self.vertexs:
-            newVertex = [0,0]
-            newVertex[0] = vertex[0] * self._lookupTable.cos[angleAbsolute] - sinSign * vertex[1] * self._lookupTable.sin[angleAbsolute]
-            newVertex[1] = sinSign * vertex[0] * self._lookupTable.sin[angleAbsolute] + vertex[1] * self._lookupTable.cos[angleAbsolute]
-            newVertexs.append(newVertex)
-        self.vertexs = tuple(newVertexs)
-       
+        for vertex in self._vertexes:
+            newVertex = Point2D()
+            newVertex.x = vertex.x * self._lookupTable.cos[angleAbsolute] - sinSign * vertex.y * self._lookupTable.sin[angleAbsolute]
+            newVertex.y = sinSign * vertex.x * self._lookupTable.sin[angleAbsolute] + vertex.y * self._lookupTable.cos[angleAbsolute]
+            newVertexes.append(newVertex)
+        self._vertexes = tuple(newVertexes)
+    
     def updatePosition(self):
         pass;   # Nothing to do here
              
-    def draw(self, viewport, drawSurface):
-        points = []
-        for v in self.vertexs:
-            p =  viewport.ToScreenCoordinate(v[0] + self.position.x, v[1] + self.position.y)
-            points.append((p.x, p.y))
-        pygame.draw.lines(drawSurface, self.color, True, points, 1 )
+    def draw(self, viewport):
+        viewport.draw(self.vertexes)
+        
+    
+''' Class STARSHIP '''
+class StarShip(GraphicObject):
+    vertexs = (Point2D(0, 20), 
+               Point2D(-10, -10), 
+               Point2D(0, 0), 
+               Point2D(10, -10))
+ 
+    
         
 ''' This is a single bullet that is fired from the Starship '''
 class Bullet(GraphicObject):

@@ -54,16 +54,18 @@ def main():
     VIEWPORT_HEIGHT = 500;
     
     ENGINE = Engine()
-    VIEWPORT = ViewPort.ViewPort(VIEWPORT_WIDTH, VIEWPORT_HEIGHT)
+    
+    # Drawing surface
+    DISPLAY_SURFACE = pygame.display.set_mode((VIEWPORT_WIDTH, VIEWPORT_HEIGHT))
+    
+    # Viewpoer
+    VIEWPORT = ViewPort.ViewPort(VIEWPORT_WIDTH, VIEWPORT_HEIGHT, DISPLAY_SURFACE)
     
     pygame.key.set_repeat(10, 10)
         
     FPS = 30
     FPSCLOCK = pygame.time.Clock()
-    
-    # Drawing surface
-    DISPLAY_SURFACE = pygame.display.set_mode((VIEWPORT_WIDTH, VIEWPORT_HEIGHT))
-        
+            
     while True:
         ENGINE.updatePositions()
         

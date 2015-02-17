@@ -4,16 +4,16 @@ Created on 09/feb/2015
 @author: Federico
 '''
 
-class Vertex2D(object):
+class Point2D(object):
     x = 0
     y = 0
     
-    def __init__(self, x, y):
+    def __init__(self, x = 0, y = 0):
         self.x = x
         self.y = y
 
     def add(self, v):
-        return Vertex2D(self.x + v.x, self.y + v.y)
+        return Point2D(self.x + v.x, self.y + v.y)
     
 class Geometry2D(object):
     '''
@@ -43,4 +43,4 @@ class Geometry2D(object):
     def move(self, vertex, angle_in_degree, length):
         new_x = vertex.x + self._lookupTable.cos[angle_in_degree] * length
         new_y = vertex.y - self._lookupTable.sin[angle_in_degree] * length
-        return Vertex2D(new_x, new_y)
+        return Point2D(new_x, new_y)

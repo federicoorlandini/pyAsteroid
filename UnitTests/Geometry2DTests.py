@@ -4,15 +4,15 @@ Created on 09/feb/2015
 @author: Federico
 '''
 import unittest
-from Main.Geometry2D import Geometry2D, Vertex2D
+from Main.Geometry2D import Geometry2D, Point2D
 from Main import LookupTable
 from math import sqrt
 from Main import Values
 
-class Vertex2DTests(unittest.TestCase):
+class Point2DTests(unittest.TestCase):
     def test_add_shouldReturnTheCorrectValue(self):
-        v1 = Vertex2D(1, 2)
-        v2 = Vertex2D(1, -1)
+        v1 = Point2D(1, 2)
+        v2 = Point2D(1, -1)
         v3 = v1.add(v2)
         self.assertEqual(v3.x, 2, "Wrong X coordinate for the vertex")
         self.assertEqual(v3.y, 1, "Wrong Y coordinate for the vertex")
@@ -21,7 +21,7 @@ class Geometry2DTests(unittest.TestCase):
     _lookupTable = LookupTable.CosSinTable()
         
     def test_rotate_positive_shouldReturnTheCorrectValue(self):
-        testVertex = Vertex2D(1, 0)
+        testVertex = Point2D(1, 0)
         angle = 90
         
         geometry2D = Geometry2D(self._lookupTable)
@@ -31,7 +31,7 @@ class Geometry2DTests(unittest.TestCase):
         self.assertTrue(Values.are_equals(testVertex.y, 1), "The y coordinate should be equal")
 
     def test_rotate_negative_shouldReturnTheCorrectValue(self):
-        testVertex = Vertex2D(1, 0)
+        testVertex = Point2D(1, 0)
         angle = -90
         
         geometry2D = Geometry2D(self._lookupTable)
@@ -41,7 +41,7 @@ class Geometry2DTests(unittest.TestCase):
         self.assertTrue(Values.are_equals(testVertex.y, -1), "The Y coordinate should be equal")
         
     def test_move_shouldReturnTheCorrectValue(self):
-        test_vertex = Vertex2D(1, 1)
+        test_vertex = Point2D(1, 1)
         test_angle = 45
         test_length = 10
         
