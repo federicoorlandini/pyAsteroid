@@ -7,24 +7,17 @@ import math
 import Main.Angles
 
 class CosSinTable(object):
-    '''
-    classdocs
-    '''
-        
     cos = object()
     sin = object()
     
     def __init__(self):
-        '''
-        Constructor
-        '''
         cos = {}
         sin = {}
         for i in range(0, 359):
             ''' Convert in radiant '''
-            angleRadiant = Main.Angles.from_degree_to_radiant(i)
-            cos[i] = math.cos(angleRadiant)
-            sin[i] = math.sin(angleRadiant)
+            angle_radiant = Main.Angles.from_degree_to_radiant(i)
+            cos[i] = math.cos(angle_radiant)
+            sin[i] = math.sin(angle_radiant)
         self.cos = cos
         self.sin = sin
         

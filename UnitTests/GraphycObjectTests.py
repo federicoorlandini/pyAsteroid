@@ -31,11 +31,11 @@ class GraphicObjectTests(unittest.TestCase):
         
         obj.rotate(rotation_angle)
         
-        expected_vertex_x = 10 / math.sqrt(2)
+        expected_vertex_x = 1 / math.sqrt(2)
         expected_vertex_y = - expected_vertex_x    # The X axis goes down
         
         self.assertTrue(Values.are_equals(obj._vertexes[0].x, expected_vertex_x), "Invalid X after rotation")
-        self.assertEqual(Values.are_equals(obj._vertexes[0].y, expected_vertex_y), "Invalid Y after rotation")
+        self.assertTrue(Values.are_equals(obj._vertexes[0].y, expected_vertex_y), "Invalid Y after rotation")
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

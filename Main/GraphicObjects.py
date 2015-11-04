@@ -32,10 +32,12 @@ class GraphicObject(object):
         newVertexes = []
         angleAbsolute = abs(angleRelative)
         
+        # In a normal axis coordinates system ( Y to the up ), these values should be inverted (angle > 0 => +1, angle < 0 => -1)
+        # but we consider a coordinate system where the Y axis goes down
         if(angleRelative < 0):
-            sinSign = -1
-        else:
             sinSign = 1
+        else:
+            sinSign = -1
             
         for vertex in self._vertexes:
             newVertex = Point2D()
@@ -44,20 +46,21 @@ class GraphicObject(object):
             newVertexes.append(newVertex)
         self._vertexes = tuple(newVertexes)
     
-    def updatePosition(self):
+    def update_position(self):
         pass;   # Nothing to do here
              
     def draw(self, viewport):
-        viewport.draw(self.vertexes)
+        viewport.draw_vertexes(self.position.x, self.position.y, self._vertexes, self._color)
         
     
 ''' Class STARSHIP '''
 class StarShip(GraphicObject):
-    vertexs = (Point2D(0, 20), 
+    def __init__(self, x, y, color, lookup_table):
+        super().__init__()
+        _vertexes = (Point2D(0, 20), 
                Point2D(-10, -10), 
                Point2D(0, 0), 
                Point2D(10, -10))
- 
     
         
 ''' This is a single bullet that is fired from the Starship '''
@@ -65,7 +68,7 @@ class Bullet(GraphicObject):
     moveDirection = 0   # Direction of movement (angle)
     speed = 0           # speed movement (in pixel per call)
     
-    def updatePosition(self):
+    def update_position(self):
         self.move(self.moveDirection, self.speed)
     
     def draw(self, drawsurface):

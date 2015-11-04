@@ -16,7 +16,7 @@ class ViewPortTests(unittest.TestCase):
         width = 600;
         height = 400;
         viewPort = Main.ViewPort.ViewPort(width = width, height = height)
-        screenCoordinates = viewPort.ToScreenCoordinate(x, y)
+        screenCoordinates = viewPort.to_screen_coordinate(x, y)
         
         # Should be mapped in the central point of the screen
         self.assertEqual(screenCoordinates.x, 300, "Wrong X coordinate")

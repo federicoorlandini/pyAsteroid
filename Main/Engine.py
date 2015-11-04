@@ -40,11 +40,11 @@ class Engine(object):
                 
     def draw(self, viewport, display_surface):
         for obj in self._graph_objects_list:
-            obj.draw(viewport, display_surface)
+            obj.draw(viewport)
          
-    def updatePositions(self):
+    def update_positions(self):
         for obj in self._graph_objects_list:
-            obj.updatePosition()
+            obj.update_position()
         
 ''' Asteroid '''
 def main():    
@@ -58,7 +58,7 @@ def main():
     # Drawing surface
     DISPLAY_SURFACE = pygame.display.set_mode((VIEWPORT_WIDTH, VIEWPORT_HEIGHT))
     
-    # Viewpoer
+    # Viewport
     VIEWPORT = ViewPort.ViewPort(VIEWPORT_WIDTH, VIEWPORT_HEIGHT, DISPLAY_SURFACE)
     
     pygame.key.set_repeat(10, 10)
@@ -67,7 +67,7 @@ def main():
     FPSCLOCK = pygame.time.Clock()
             
     while True:
-        ENGINE.updatePositions()
+        ENGINE.update_positions()
         
         for event in pygame.event.get():
             ENGINE.handle_keys(event)
