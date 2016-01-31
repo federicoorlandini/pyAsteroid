@@ -27,16 +27,16 @@ class Engine(object):
             pygame.quit()
             sys.exit()
         elif event.type == pygame.locals.KEYDOWN:
-            # Pulsante A
+            # Button A --> Rotate
             if event.key == pygame.locals.K_a:
                 self.starship.rotate(-10)
-            # Pulsante D
+            # Button D --> Rotate
             if event.key == pygame.locals.K_d:
                 self.starship.rotate(10)
-            # Spacebar
+            # Space bar --> Fire
             if event.key == pygame.locals.K_SPACE:
-                newBullet = self.starship.fire();
-                self._graph_objects_list.append(newBullet)
+                new_bullet = self.starship.fire()
+                self._graph_objects_list.append(new_bullet)
                 
     def draw(self, viewport, display_surface):
         for obj in self._graph_objects_list:
@@ -55,17 +55,19 @@ def main():
     
     ENGINE = Engine()
     
-    # Drawing surface
+    # Prepare the drawing surface
     DISPLAY_SURFACE = pygame.display.set_mode((VIEWPORT_WIDTH, VIEWPORT_HEIGHT))
     
-    # Viewport
+    # Prepare the viewport
     VIEWPORT = ViewPort.ViewPort(VIEWPORT_WIDTH, VIEWPORT_HEIGHT, DISPLAY_SURFACE)
     
     pygame.key.set_repeat(10, 10)
-        
+
+    # Update speed
     FPS = 30
     FPSCLOCK = pygame.time.Clock()
-            
+
+    # Engine loop
     while True:
         ENGINE.update_positions()
         

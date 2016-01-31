@@ -3,7 +3,7 @@ Created on 07/dic/2014
 
 @author: Federico
 '''
-from Main.Geometry2D import Point2D
+from Main.Geometry2D import Vector2D
 import pygame
 
 class ViewPort(object):
@@ -20,7 +20,7 @@ class ViewPort(object):
     def to_screen_coordinate(self, x, y):
         viewport_x = self.width / 2 + x
         viewport_y = self.height / 2 + y
-        return Point2D(viewport_x, viewport_y)
+        return Vector2D(viewport_x, viewport_y)
     
     def draw_vertexes(self, position_x, position_y, vertex_list, color):
         points = []

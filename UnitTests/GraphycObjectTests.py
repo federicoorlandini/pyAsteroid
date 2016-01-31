@@ -7,7 +7,7 @@ import unittest
 import math
 from Main import Values
 from Main.GraphicObjects import GraphicObject
-from Main.Geometry2D import Point2D
+from Main.Geometry2D import Vector2D
 
 
 class GraphicObjectTests(unittest.TestCase):
@@ -25,7 +25,7 @@ class GraphicObjectTests(unittest.TestCase):
         self.assertTrue(Values.are_equals(obj.position.y, expected_y), "The y coordinate is wrong")
 
     def test_rotate_shoudMoveTheVertexInTheCorrectPlace(self):
-        vertexes = (Point2D(1, 0), )
+        vertexes = (Vector2D(1, 0),)
         obj = GraphicObject(vertexes= vertexes)
         rotation_angle = 45
         

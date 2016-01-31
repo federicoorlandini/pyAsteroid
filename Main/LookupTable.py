@@ -20,4 +20,3 @@ class CosSinTable(object):
             sin[i] = math.sin(angle_radiant)
         self.cos = cos
         self.sin = sin
-        
