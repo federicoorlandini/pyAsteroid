@@ -8,6 +8,7 @@ import math
 from Main import Angles
 from Main import Values
 
+
 class Test(unittest.TestCase):
     def test_from_radiant_to_degree_should_return_the_correct_value(self):
         angle_in_radiant = math.pi / 2

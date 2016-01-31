@@ -6,9 +6,10 @@ Created on 13/mag/2014
 import math
 import Main.Angles
 
+
 class CosSinTable(object):
-    cos = object()
-    sin = object()
+    cos = None
+    sin = None
     
     def __init__(self):
         cos = {}

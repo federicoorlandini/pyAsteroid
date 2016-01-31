@@ -14,7 +14,9 @@ from Main import ViewPort
 
 logging.getLogger().setLevel(logging.DEBUG)
 
-   
+# -----------------------------------------------------------------
+
+
 class Engine(object):
     _graph_objects_list = []
        
@@ -38,15 +40,20 @@ class Engine(object):
                 new_bullet = self.starship.fire()
                 self._graph_objects_list.append(new_bullet)
                 
-    def draw(self, viewport, display_surface):
+    def draw(self, viewport):
         for obj in self._graph_objects_list:
             obj.draw(viewport)
          
     def update_positions(self):
         for obj in self._graph_objects_list:
             obj.update_position()
-        
-''' Asteroid '''
+            # We must check if the object is visible on the screen
+            # If not, we must remove from the object list
+
+# -----------------------------------------------------------------
+''' Main loop '''
+
+
 def main():    
     pygame.init()
     
@@ -65,7 +72,7 @@ def main():
 
     # Update speed
     FPS = 30
-    FPSCLOCK = pygame.time.Clock()
+    FPS_CLOCK = pygame.time.Clock()
 
     # Engine loop
     while True:
@@ -75,12 +82,12 @@ def main():
             ENGINE.handle_keys(event)
                             
         DISPLAY_SURFACE.fill(Main.Constants.BLACK)
-        ENGINE.draw(VIEWPORT, DISPLAY_SURFACE)
+        ENGINE.draw(VIEWPORT)
         
         pygame.display.update()
-        FPSCLOCK.tick(FPS)
+        FPS_CLOCK.tick(FPS)
   
     
-
+# -----------------------------------------------------------------
 if __name__ == "__main__":
     main()

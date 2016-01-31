@@ -7,7 +7,7 @@ import unittest
 import math
 from Main import Values
 from Main.GraphicObjects import GraphicObject
-from Main.Geometry2D import Vector2D
+from Main.GeometryTransformation2D import Vector2D
 
 
 class GraphicObjectTests(unittest.TestCase):
