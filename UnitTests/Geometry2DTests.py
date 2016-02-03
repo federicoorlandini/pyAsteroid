@@ -1,8 +1,3 @@
-'''
-Created on 09/feb/2015
-
-@author: Federico
-'''
 import unittest
 from Main.GeometryTransformation2D import GeometryTransformation2D, Vector2D
 from Main import LookupTable
@@ -26,8 +21,8 @@ class Geometry2DTests(unittest.TestCase):
         test_vertex = Vector2D(1, 0)
         angle = 90
         
-        geometry2D = GeometryTransformation2D(self._lookupTable)
-        geometry2D.rotate(test_vertex, angle)
+        geometry_2d = GeometryTransformation2D(self._lookupTable)
+        geometry_2d.rotate(test_vertex, angle)
         
         self.assertTrue(Values.are_equals(test_vertex.x, 0), "The X coordinate should be equal")
         self.assertTrue(Values.are_equals(test_vertex.y, 1), "The y coordinate should be equal")
@@ -40,7 +35,7 @@ class Geometry2DTests(unittest.TestCase):
         geometry_2d.rotate(test_vertex, angle)
         
         self.assertTrue(Values.are_equals(test_vertex.x, 0), "The X coordinate should be equal")
-        self.assertTrue(Values.are_equals(test_vertex.y, -1), "The Y coordinate should be equal")
+        self.assertTrue(Values.are_equals(test_vertex.y, 1), "The Y coordinate should be equal")
         
     def test_move_shouldReturnTheCorrectValue(self):
         test_vertex = Vector2D(1, 1)

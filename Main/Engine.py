@@ -1,9 +1,3 @@
-'''
-Created on 10/mag/2014
-
-@author: Federico
-'''
-
 import pygame.locals
 import sys
 import logging
@@ -51,10 +45,10 @@ class Engine(object):
             # If not, we must remove from the object list
 
 # -----------------------------------------------------------------
-''' Main loop '''
 
 
-def main():    
+def main():
+    """ Main game loop """
     pygame.init()
     
     VIEWPORT_WIDTH = 500;

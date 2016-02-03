@@ -1,8 +1,3 @@
-'''
-Created on 13/mag/2014
-
-@author: Federico
-'''
 import math
 import Main.Angles
 

@@ -1,8 +1,3 @@
-'''
-Created on 13/feb/2015
-
-@author: Federico
-'''
 import unittest
 import math
 from Main import Angles

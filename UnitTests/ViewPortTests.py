@@ -1,8 +1,3 @@
-'''
-Created on 07/dic/2014
-
-@author: Federico
-'''
 import unittest.mock
 import Main.ViewPort
 from Main.GeometryTransformation2D import Vector2D
@@ -33,17 +28,15 @@ class ViewPortTests(unittest.TestCase):
 
         # The vertex list (only one)
         vertexes_list = (Vector2D(0, 0),)
-        position_x = 0
-        position_y = 0
         color = Main.Constants.WHITE
-        viewport.draw_vertexes(position_x, position_y, vertexes_list, color)
+        viewport.draw_vertexes(vertexes_list, color)
         # Check the sequence passed to the draw_surface.line() call
         expected_sequence = ((300, 200),)
         self.assertSequenceEqual(draw_surface.lines.call_args[0][3], expected_sequence, "The sequences are not equal")
 
     def test_is_object_visible_anObjectVeryFarFromTheViewportCenter_shoudlBeNotVisible(self):
         # We have an object that is outside the viewport
-        graph_object = Main.GraphicObjects.GraphicObject(x=10000, y=10000)
+        graph_object = Main.GraphicObjects.GraphicObject(x=10000, y=10000, vertexes_local=(Vector2D(0, 0), Vector2D(10, 10)))
 
         width = 600
         height = 400
@@ -53,12 +46,13 @@ class ViewPortTests(unittest.TestCase):
 
     def test_is_object_visible_anObjectInTheCenterOfTheViewportCenter_shoudlBeVisible(self):
         # We have an object that is in the center or the screen
-        graph_object = Main.GraphicObjects.GraphicObject(x=0, y=0)
+        graph_object = Main.GraphicObjects.GraphicObject(x=0, y=0, vertexes_local=(Vector2D(0, 0), Vector2D(10, 10)))
 
         width = 600
         height = 400
         viewport = Main.ViewPort.ViewPort(width, height, draw_surface=None)
         is_visible = viewport.is_object_visible(graph_object)
         self.assertTrue(is_visible, "the object should be visible")
+
 if __name__ == "__main__":
     unittest.main()

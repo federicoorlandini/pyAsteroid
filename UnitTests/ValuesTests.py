@@ -1,8 +1,3 @@
-'''
-Created on 15/feb/2015
-
-@author: Federico
-'''
 import unittest
 from Main import Values
 
