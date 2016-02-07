@@ -16,6 +16,7 @@ class GeometryTransformation2D(object):
         self.lookup_table = lookup_table
         
     def rotate(self, vertex, angle):
+        """
         if angle < 0:
             sin_sign = -1
         else:
@@ -25,7 +26,11 @@ class GeometryTransformation2D(object):
         
         x = vertex.x * self.lookup_table.cos[angle] - sin_sign * vertex.y * self.lookup_table.sin[angle]
         y = sin_sign * vertex.x * self.lookup_table.sin[angle] + vertex.y * self.lookup_table.cos[angle]
-        
+        """
+
+        x = vertex.x * self.lookup_table.cos[angle] - vertex.y * self.lookup_table.sin[angle]
+        y = vertex.x * self.lookup_table.sin[angle] + vertex.y * self.lookup_table.cos[angle]
+
         return Vector2D(x, y)
         
     def move_in_a_direction(self, vertex, angle_in_degree, length):
@@ -36,7 +41,7 @@ class GeometryTransformation2D(object):
         :return: a vertex that represent the new position
         """
         new_x = vertex.x + self.lookup_table.cos[angle_in_degree] * length
-        new_y = vertex.y - self.lookup_table.sin[angle_in_degree] * length
+        new_y = vertex.y + self.lookup_table.sin[angle_in_degree] * length
         return Vector2D(new_x, new_y)
 
     def translate(self, vertex, x, y):
