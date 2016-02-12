@@ -18,22 +18,29 @@ class Engine(object):
         self.starship = Main.GraphicObjects.StarShip(0, 0, Main.Constants.WHITE, Main.Constants.LOOKUP_TABLE)
         self._graph_objects_list.append(self.starship)
     
-    def handle_keys(self, event):
+    def handle_key_events(self, event):
         if event.type == pygame.locals.QUIT:
+            # Exit application
             pygame.quit()
             sys.exit()
-        elif event.type == pygame.locals.KEYDOWN:
+
+    def handle_keyboard(self):
+        keys_pressed = pygame.key.get_pressed()
+        if keys_pressed[pygame.locals.K_a]:
             # Button A --> Rotate
-            if event.key == pygame.locals.K_a:
-                self.starship.rotate_head_direction(-10)
+            self.starship.rotate_head_direction(-10)
+        if keys_pressed[pygame.locals.K_d]:
             # Button D --> Rotate
-            if event.key == pygame.locals.K_d:
-                self.starship.rotate_head_direction(10)
+            self.starship.rotate_head_direction(10)
+        if keys_pressed[pygame.locals.K_SPACE]:
             # Space bar --> Fire
-            if event.key == pygame.locals.K_SPACE:
-                new_bullet = self.starship.fire()
-                self._graph_objects_list.append(new_bullet)
-                
+            new_bullet = self.starship.fire()
+            self._graph_objects_list.append(new_bullet)
+        if keys_pressed[pygame.locals.K_q]:
+            # Exit application
+            pygame.quit()
+            sys.exit()
+
     def draw(self, viewport):
         for obj in self._graph_objects_list:
             if not viewport.is_object_visible(obj):
@@ -81,8 +88,10 @@ def main():
         ENGINE.update_positions()
         
         for event in pygame.event.get():
-            ENGINE.handle_keys(event)
-                            
+            ENGINE.handle_key_events(event)
+
+        ENGINE.handle_keyboard()
+
         DISPLAY_SURFACE.fill(Main.Constants.BLACK)
         ENGINE.draw(VIEWPORT)
 
