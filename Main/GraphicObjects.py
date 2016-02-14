@@ -16,9 +16,10 @@ class GraphicObject(object):
         self.object_vertexes = vertexes_local   # These are the vertex that are relative to the object coordinates
         self.head_angle = 0 # This is the angle that determine the direction of the object
         self.rotation_angle = 0  # This is the angle of rotation of the object on its center point
+        self.speed = 0  # The movement speed in pixel/sec
 
     """ This method move the Graphical object """
-    def move(self, angle, length):
+    def _move(self, angle, length):
         self.position = self._geometry2D.move_in_a_direction(self.position, angle, length)
 
     """ This method rotate the head direction of the Graphical object """
@@ -29,8 +30,10 @@ class GraphicObject(object):
     def rotate_object(self, relative_angle):
         self.rotation_angle = int((self.rotation_angle + relative_angle) % 360)
 
-    def update_position(self):
-        pass  # Nothing to do here
+    def update_position(self, delta_time):
+        # Must move the object in the heading direction based on the speed
+        distance = self.speed * delta_time
+        self._move(self.head_angle, distance)
 
     def _get_world_coordinate(self, world_vertex):
         # Build the vertex coordinate relative to the world axis (where (0,0) is the center of the screen)
@@ -68,16 +71,13 @@ class StarShip(GraphicObject):
 
 class Bullet(GraphicObject):
     """ This is a single bullet that is fired from the Star ship """
-    head_angle = 0  # Direction of movement (angle)
 
-    def __init__(self, x, y, angle_of_direction, speed=10):
+    def __init__(self, x, y, angle_of_direction, speed=150):
         super().__init__(x, y)
         self.head_angle = angle_of_direction
         self.speed = speed
         self.object_vertexes = (Vector2D(-3, 0), Vector2D(3, 0))
 
-    def update_position(self):
-        self.move(self.head_angle, self.speed)
 
 # -----------------------------------------------------------------
 
@@ -87,7 +87,4 @@ class Asteroid(GraphicObject):
         super(Asteroid, self).__init__(x, y)
         self.head_angle = angle_of_direction
         self.speed = speed
-        self.object_vertexes = (Vector2D(1, 1), Vector2D(-1, 1), Vector2D(-1, -1), Vector2D(1, -1)) # A rectangle
-
-    def update_position(self):
-        self.move(self.head_angle, self.speed)
+        self.object_vertexes = (Vector2D(1, 1), Vector2D(-1, 1), Vector2D(-1, -1), Vector2D(1, -1))  # A rectangle

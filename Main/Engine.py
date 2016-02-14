@@ -19,7 +19,7 @@ class Engine(object):
         self._graph_objects_list.append(self.starship)
     
     def handle_key_events(self, event):
-        if event.type == pygame.locals.QUIT:
+        if event.type == pygame.locals.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
             # Exit application
             pygame.quit()
             sys.exit()
@@ -48,9 +48,9 @@ class Engine(object):
             else:
                 obj.draw(viewport)
          
-    def update_positions(self):
+    def update_positions(self, delta_time):
         for obj in self._graph_objects_list:
-            obj.update_position()
+            obj.update_position(delta_time)
 
     def show_number_of_object_in_list(self, display_surface, font):
         label_surface = font.render("Objects: %s" % len(self._graph_objects_list), 1, (255,255,255))
@@ -85,20 +85,24 @@ def main():
 
     # Engine loop
     while True:
-        ENGINE.update_positions()
-        
+        # handle events
         for event in pygame.event.get():
             ENGINE.handle_key_events(event)
 
+        # Handle keyboard
         ENGINE.handle_keyboard()
 
+        delta_time = FPS_CLOCK.tick(FPS)
+
+        ENGINE.update_positions(delta_time / 1000)
+
+        # Draw the scene
         DISPLAY_SURFACE.fill(Main.Constants.BLACK)
         ENGINE.draw(VIEWPORT)
-
         ENGINE.show_number_of_object_in_list(DISPLAY_SURFACE, DEFAULT_FONT)
 
         pygame.display.update()
-        FPS_CLOCK.tick(FPS)
+
   
     
 # -----------------------------------------------------------------

@@ -15,7 +15,7 @@ class GraphicObjectTests(unittest.TestCase):
         expected_x = 10 / math.sqrt(2)
         expected_y = expected_x
         
-        obj.move(movement_angle, movement_length)
+        obj._move(movement_angle, movement_length)
         
         self.assertTrue(Values.are_equals(obj.position.x, expected_x), "The X coordinate is wrong")
         self.assertTrue(Values.are_equals(obj.position.y, expected_y), "The y coordinate is wrong")
