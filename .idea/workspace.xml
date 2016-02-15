@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61e7ee92-2853-4340-a817-b741315ab216" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/Engine.py" afterPath="$PROJECT_DIR$/Main/Engine.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/GraphicObjects.py" afterPath="$PROJECT_DIR$/Main/GraphicObjects.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/Angles.py" afterPath="$PROJECT_DIR$/Main/Angles.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/Constants.py" afterPath="$PROJECT_DIR$/Main/Constants.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/GeometryTransformation2D.py" afterPath="$PROJECT_DIR$/Main/GeometryTransformation2D.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/ViewPort.py" afterPath="$PROJECT_DIR$/Main/ViewPort.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UnitTests/AnglesTests.py" afterPath="$PROJECT_DIR$/UnitTests/AnglesTests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UnitTests/Geometry2DTests.py" afterPath="$PROJECT_DIR$/UnitTests/Geometry2DTests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UnitTests/GraphycObjectTests.py" afterPath="$PROJECT_DIR$/UnitTests/GraphycObjectTests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UnitTests/ValuesTests.py" afterPath="$PROJECT_DIR$/UnitTests/ValuesTests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UnitTests/ViewPortTests.py" afterPath="$PROJECT_DIR$/UnitTests/ViewPortTests.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Main/LookupTable.py" afterPath="$PROJECT_DIR$/Main/lookuptables.py" />
     </list>
     <ignored path="pyAsteroid.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,41 +33,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GraphicObjects.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Main/GraphicObjects.py">
+      <file leaf-file-name="graphicobjects.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Main/graphicobjects.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.094972">
-              <caret line="85" column="56" selection-start-line="85" selection-start-column="56" selection-end-line="85" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.38240576">
+              <caret line="89" column="68" selection-start-line="89" selection-start-column="68" selection-end-line="89" selection-end-column="68" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GraphycObjectTests.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UnitTests/GraphycObjectTests.py">
+      <file leaf-file-name="graphycobjecttests.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UnitTests/graphycobjecttests.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+              <caret line="37" column="49" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ViewPort.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Main/ViewPort.py">
+      <file leaf-file-name="anglestests.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UnitTests/anglestests.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+              <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Engine.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Main/Engine.py">
+      <file leaf-file-name="geometrytransformation2d.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Main/geometrytransformation2d.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="52" column="42" selection-start-line="52" selection-start-column="42" selection-end-line="52" selection-end-column="42" />
+              <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="engine.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Main/engine.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -89,14 +107,18 @@
         <option value="$PROJECT_DIR$/Main/Values.py" />
         <option value="$PROJECT_DIR$/UnitTests/ValuesTests.py" />
         <option value="$PROJECT_DIR$/UnitTests/ViewPortTest.py" />
-        <option value="$PROJECT_DIR$/Main/GeometryTransformation2D.py" />
-        <option value="$PROJECT_DIR$/UnitTests/Geometry2DTests.py" />
         <option value="$PROJECT_DIR$/Main/LookupTable.py" />
         <option value="$PROJECT_DIR$/Main/ViewPort.py" />
         <option value="$PROJECT_DIR$/UnitTests/ViewPortTests.py" />
         <option value="$PROJECT_DIR$/UnitTests/GraphycObjectTests.py" />
         <option value="$PROJECT_DIR$/Main/Engine.py" />
         <option value="$PROJECT_DIR$/Main/GraphicObjects.py" />
+        <option value="$PROJECT_DIR$/UnitTests/Geometry2DTests.py" />
+        <option value="$PROJECT_DIR$/Main/GeometryTransformation2D.py" />
+        <option value="$PROJECT_DIR$/Main/angles.py" />
+        <option value="$PROJECT_DIR$/UnitTests/graphycobjecttests.py" />
+        <option value="$PROJECT_DIR$/Main/engine.py" />
+        <option value="$PROJECT_DIR$/Main/graphicobjects.py" />
       </list>
     </option>
   </component>
@@ -131,6 +153,20 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pyAsteroid">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -179,20 +215,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="pyAsteroid">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scratches" />
     </panes>
   </component>
@@ -223,7 +245,7 @@
       <recent name="D:\Progetti\Phyton\pyAsteroid\Main\Constants" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in UnitTests">
+  <component name="RunManager" selected="Python.engine">
     <configuration default="false" name="Engine" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -236,7 +258,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="pyAsteroid" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main/Engine.py" />
+      <option name="SCRIPT_NAME" value="D:\Progetti\Phyton\pyAsteroid\Main\engine.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -256,51 +278,7 @@
       <option name="METHOD_NAME" value="" />
       <option name="FOLDER_NAME" value="$PROJECT_DIR$/UnitTests" />
       <option name="TEST_TYPE" value="TEST_FOLDER" />
-      <option name="PATTERN" value="*Tests.py" />
-      <option name="USE_PATTERN" value="true" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittests in GeometryTransformation2DTests" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/UnitTests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pyAsteroid" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/UnitTests/Geometry2DTests.py" />
-      <option name="CLASS_NAME" value="GeometryTransformation2DTests" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_CLASS" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittests in ViewPortTests" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/UnitTests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pyAsteroid" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/UnitTests/ViewPortTests.py" />
-      <option name="CLASS_NAME" value="ViewPortTests" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="$PROJECT_DIR$/UnitTests" />
-      <option name="TEST_TYPE" value="TEST_CLASS" />
-      <option name="PATTERN" value="*Tests.py" />
+      <option name="PATTERN" value="*tests.py" />
       <option name="USE_PATTERN" value="true" />
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
@@ -317,7 +295,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="pyAsteroid" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/UnitTests/GraphycObjectTests.py" />
+      <option name="SCRIPT_NAME" value="D:\Progetti\Phyton\pyAsteroid\UnitTests\graphycobjecttests.py" />
       <option name="CLASS_NAME" value="GraphicObjectTests" />
       <option name="METHOD_NAME" value="test_is_object_visible_anObjectVeryFarFromTheViewportCenter_shoudlBeNotVisible" />
       <option name="FOLDER_NAME" value="" />
@@ -327,6 +305,40 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="graphicobjects" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Main" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="pyAsteroid" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main/graphicobjects.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="engine" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Main" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="pyAsteroid" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main/engine.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -454,17 +466,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.Engine" />
       <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in UnitTests" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in GeometryTransformation2DTests" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in ViewPortTests" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest GraphicObjectTests.test_is_object_visible_anObjectVeryFarFromTheViewportCenter_shoudlBeNotVisible" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest GraphicObjectTests.test_is_object_visible_anObjectVeryFarFromTheViewportCenter_shoudlBeNotVisible" />
+      <item index="3" class="java.lang.String" itemvalue="Python.graphicobjects" />
+      <item index="4" class="java.lang.String" itemvalue="Python.engine" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in UnitTests" />
+        <item index="0" class="java.lang.String" itemvalue="Python.engine" />
         <item index="1" class="java.lang.String" itemvalue="Python.Engine" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest GraphicObjectTests.test_is_object_visible_anObjectVeryFarFromTheViewportCenter_shoudlBeNotVisible" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in ViewPortTests" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in GeometryTransformation2DTests" />
+        <item index="2" class="java.lang.String" itemvalue="Python.graphicobjects" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in UnitTests" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest GraphicObjectTests.test_is_object_visible_anObjectVeryFarFromTheViewportCenter_shoudlBeNotVisible" />
       </list>
     </recent_temporary>
   </component>
@@ -482,18 +494,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittest_GraphicObjectTests_test_is_object_visible_anObjectVeryFarFromTheViewportCenter_shoudlBeNotVisible - 2016.02.10 at 00h 15m 00s.xml">
-      <configuration name="Unittest GraphicObjectTests.test_is_object_visible_anObjectVeryFarFromTheViewportCenter_shoudlBeNotVisible" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittest_GraphicObjectTests_test_is_object_visible_anObjectVeryFarFromTheViewportCenter_shoudlBeNotVisible - 2016.02.10 at 00h 15m 48s.xml">
-      <configuration name="Unittest GraphicObjectTests.test_is_object_visible_anObjectVeryFarFromTheViewportCenter_shoudlBeNotVisible" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittest_GraphicObjectTests_test_is_object_visible_anObjectVeryFarFromTheViewportCenter_shoudlBeNotVisible - 2016.02.10 at 00h 16m 40s.xml">
-      <configuration name="Unittest GraphicObjectTests.test_is_object_visible_anObjectVeryFarFromTheViewportCenter_shoudlBeNotVisible" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittest_GraphicObjectTests_test_is_object_visible_anObjectVeryFarFromTheViewportCenter_shoudlBeNotVisible - 2016.02.10 at 00h 16m 52s.xml">
-      <configuration name="Unittest GraphicObjectTests.test_is_object_visible_anObjectVeryFarFromTheViewportCenter_shoudlBeNotVisible" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_in_UnitTests - 2016.02.10 at 00h 19m 58s.xml">
       <configuration name="Unittests in UnitTests" configurationId="tests" />
     </history-entry>
@@ -512,6 +512,18 @@
     <history-entry file="Unittests_in_UnitTests - 2016.02.14 at 23h 47m 18s.xml">
       <configuration name="Unittests in UnitTests" configurationId="tests" />
     </history-entry>
+    <history-entry file="Unittests_in_UnitTests - 2016.02.15 at 23h 54m 08s.xml">
+      <configuration name="Unittests in UnitTests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_UnitTests - 2016.02.15 at 23h 55m 04s.xml">
+      <configuration name="Unittests in UnitTests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_UnitTests - 2016.02.15 at 23h 55m 16s.xml">
+      <configuration name="Unittests in UnitTests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_UnitTests - 2016.02.15 at 23h 56m 16s.xml">
+      <configuration name="Unittests in UnitTests" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -520,12 +532,11 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18601191" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39905363" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32820514" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991454" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34017095" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33846155" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991454" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3965812" sideWeight="0.49707174" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -533,6 +544,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32820514" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -549,7 +561,17 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="27" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="41" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="tests">
@@ -567,14 +589,14 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/UnitTests/AnglesTests.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/anglestests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/Engine.py">
+    <entry file="file://$PROJECT_DIR$/Main/engine.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="44" column="18" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
@@ -584,21 +606,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/ViewPortTests.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/viewporttests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/ViewPort.py">
+    <entry file="file://$PROJECT_DIR$/Main/viewport.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/GraphicObjects.py">
+    <entry file="file://$PROJECT_DIR$/Main/graphicobjects.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -606,21 +628,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/GeometryTransformation2D.py">
+    <entry file="file://$PROJECT_DIR$/Main/geometrytransformation2d.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/AnglesTests.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/anglestests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/Engine.py">
+    <entry file="file://$PROJECT_DIR$/Main/engine.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="44" column="18" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
@@ -630,14 +652,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/ViewPortTests.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/viewporttests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="75" selection-start-line="49" selection-start-column="75" selection-end-line="49" selection-end-column="75" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/GraphicObjects.py">
+    <entry file="file://$PROJECT_DIR$/Main/graphicobjects.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -645,14 +667,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/GeometryTransformation2D.py">
+    <entry file="file://$PROJECT_DIR$/Main/geometrytransformation2d.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/Engine.py">
+    <entry file="file://$PROJECT_DIR$/Main/engine.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="45" column="44" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
@@ -662,7 +684,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/GraphicObjects.py">
+    <entry file="file://$PROJECT_DIR$/Main/graphicobjects.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="57" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
@@ -670,35 +692,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/GeometryTransformation2D.py">
+    <entry file="file://$PROJECT_DIR$/Main/geometrytransformation2d.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/ViewPort.py">
+    <entry file="file://$PROJECT_DIR$/Main/viewport.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/AnglesTests.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/anglestests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/Geometry2DTests.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/geometry2dtests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="58" column="19" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/GraphycObjectTests.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/graphycobjecttests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -706,21 +728,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/ValuesTests.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/valuestests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="55" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/ViewPortTests.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/viewporttests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/GraphicObjects.py">
+    <entry file="file://$PROJECT_DIR$/Main/graphicobjects.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="85" column="30" selection-start-line="85" selection-start-column="30" selection-end-line="85" selection-end-column="30" />
@@ -728,49 +750,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/LookupTable.py">
+    <entry file="file://$PROJECT_DIR$/Main/lookuptables.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/Values.py">
+    <entry file="file://$PROJECT_DIR$/Main/values.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/GeometryTransformation2D.py">
+    <entry file="file://$PROJECT_DIR$/Main/geometrytransformation2d.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/ViewPort.py">
+    <entry file="file://$PROJECT_DIR$/Main/viewport.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/AnglesTests.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/anglestests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/Geometry2DTests.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/geometry2dtests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="58" column="19" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/GraphycObjectTests.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/graphycobjecttests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -778,21 +800,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/ValuesTests.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/valuestests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="55" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/ViewPortTests.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/viewporttests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/GraphicObjects.py">
+    <entry file="file://$PROJECT_DIR$/Main/graphicobjects.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="85" column="30" selection-start-line="85" selection-start-column="30" selection-end-line="85" selection-end-column="30" />
@@ -800,35 +822,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/LookupTable.py">
+    <entry file="file://$PROJECT_DIR$/Main/lookuptables.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/Values.py">
+    <entry file="file://$PROJECT_DIR$/Main/values.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/Engine.py">
+    <entry file="file://$PROJECT_DIR$/Main/engine.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/ViewPort.py">
+    <entry file="file://$PROJECT_DIR$/Main/viewport.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/GraphicObjects.py">
+    <entry file="file://$PROJECT_DIR$/Main/graphicobjects.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="60" column="34" selection-start-line="60" selection-start-column="34" selection-end-line="60" selection-end-column="34" />
@@ -850,99 +872,100 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/Angles.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main/Constants.py">
+    <entry file="file://$PROJECT_DIR$/Main/constants.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/Values.py">
+    <entry file="file://$PROJECT_DIR$/Main/values.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16831683">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/ValuesTests.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/valuestests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/AnglesTests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.028052805">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main/GeometryTransformation2D.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2839196">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/Geometry2DTests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main/LookupTable.py">
+    <entry file="file://$PROJECT_DIR$/Main/lookuptables.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4874372">
           <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/ViewPortTests.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/viewporttests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/ViewPort.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/geometry2dtests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main/viewport.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main/angles.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13846155">
+          <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main/geometrytransformation2d.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/GraphycObjectTests.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/anglestests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/Engine.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/graphycobjecttests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="42" selection-start-line="52" selection-start-column="42" selection-end-line="52" selection-end-column="42" />
+          <caret line="37" column="49" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main/engine.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/GraphicObjects.py">
+    <entry file="file://$PROJECT_DIR$/Main/graphicobjects.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.094972">
-          <caret line="85" column="56" selection-start-line="85" selection-start-column="56" selection-end-line="85" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.38240576">
+          <caret line="89" column="68" selection-start-line="89" selection-start-column="68" selection-end-line="89" selection-end-column="68" />
           <folding />
         </state>
       </provider>

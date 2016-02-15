@@ -1,4 +1,4 @@
-from Main.GeometryTransformation2D import Vector2D
+from Main.geometrytransformation2d import Vector2D
 import pygame
 
 

@@ -1,8 +1,8 @@
 import unittest.mock
-from Main import ViewPort
-from Main.GeometryTransformation2D import Vector2D
-import Main.Constants
-from Main.GraphicObjects import GraphicObject
+from Main import viewport
+from Main.geometrytransformation2d import Vector2D
+import Main.constants
+from Main.graphicobjects import GraphicObject
 
 
 class ViewPortTests(unittest.TestCase):
@@ -11,7 +11,7 @@ class ViewPortTests(unittest.TestCase):
         viewport_center = Vector2D(0,0)
         width = 600
         height = 400
-        viewport = Main.ViewPort.ViewPort(width=width, height=height)
+        viewport = Main.viewport.ViewPort(width=width, height=height)
         screen_coordinates = viewport.to_screen_coordinate(viewport_center)
 
         # Should be mapped in the central point of the screen
@@ -23,11 +23,11 @@ class ViewPortTests(unittest.TestCase):
         # Let's prepare the viewport to test
         width = 600
         height = 400
-        viewport = Main.ViewPort.ViewPort(width, height, draw_surface)
+        viewport = Main.viewport.ViewPort(width, height, draw_surface)
 
         # The vertex list (only one)
         vertexes_list = (Vector2D(0, 0),)
-        color = Main.Constants.WHITE
+        color = Main.constants.WHITE
         viewport.draw_world_vertexes(vertexes_list, color)
         # Check the sequence passed to the draw_surface.line() call
         expected_sequence = ((300, 200),)
@@ -39,7 +39,7 @@ class ViewPortTests(unittest.TestCase):
 
         width = 600
         height = 400
-        viewport = Main.ViewPort.ViewPort(width, height, draw_surface=None)
+        viewport = Main.viewport.ViewPort(width, height, draw_surface=None)
         # TODO - Should test on the GrahpicObject, not on viewPort
         is_visible = viewport.is_object_visible(graph_object)
         self.assertFalse(is_visible, "the object should be not visible")
@@ -50,7 +50,7 @@ class ViewPortTests(unittest.TestCase):
 
         width = 600
         height = 400
-        viewport = Main.ViewPort.ViewPort(width, height, draw_surface=None)
+        viewport = Main.viewport.ViewPort(width, height, draw_surface=None)
         # TODO - Should test on the GrahpicObject, not on viewPort
         is_visible = viewport.is_object_visible(graph_object)
         self.assertTrue(is_visible, "the object should be visible")

@@ -1,9 +1,9 @@
 import pygame.locals
 import sys
 import logging
-import Main.Constants
-import Main.GraphicObjects
-from Main import ViewPort
+import Main.constants
+import Main.graphicobjects
+from Main import viewport
 
 
 logging.getLogger().setLevel(logging.DEBUG)
@@ -15,7 +15,7 @@ class Engine(object):
     _graph_objects_list = []
        
     def __init__(self):
-        self.starship = Main.GraphicObjects.StarShip(0, 0, Main.Constants.WHITE, Main.Constants.LOOKUP_TABLE)
+        self.starship = Main.graphicobjects.StarShip(0, 0, Main.constants.WHITE, Main.constants.LOOKUP_TABLE)
         self._graph_objects_list.append(self.starship)
     
     def handle_key_events(self, event):
@@ -35,7 +35,8 @@ class Engine(object):
         if keys_pressed[pygame.locals.K_SPACE]:
             # Space bar --> Fire
             new_bullet = self.starship.fire()
-            self._graph_objects_list.append(new_bullet)
+            if new_bullet is not None:
+                self._graph_objects_list.append(new_bullet)
         if keys_pressed[pygame.locals.K_q]:
             # Exit application
             pygame.quit()
@@ -48,9 +49,9 @@ class Engine(object):
             else:
                 obj.draw(viewport)
          
-    def update_positions(self, delta_time):
+    def update_world(self, delta_time):
         for obj in self._graph_objects_list:
-            obj.update_position(delta_time)
+            obj.update_status(delta_time)
 
     def show_number_of_object_in_list(self, display_surface, font):
         label_surface = font.render("Objects: %s" % len(self._graph_objects_list), 1, (255,255,255))
@@ -75,7 +76,7 @@ def main():
     DISPLAY_SURFACE = pygame.display.set_mode((VIEWPORT_WIDTH, VIEWPORT_HEIGHT))
     
     # Prepare the viewport
-    VIEWPORT = ViewPort.ViewPort(VIEWPORT_WIDTH, VIEWPORT_HEIGHT, DISPLAY_SURFACE)
+    VIEWPORT = viewport.ViewPort(VIEWPORT_WIDTH, VIEWPORT_HEIGHT, DISPLAY_SURFACE)
     
     pygame.key.set_repeat(10, 10)
 
@@ -94,10 +95,10 @@ def main():
 
         delta_time = FPS_CLOCK.tick(FPS)
 
-        ENGINE.update_positions(delta_time / 1000)
+        ENGINE.update_world(delta_time / 1000)
 
         # Draw the scene
-        DISPLAY_SURFACE.fill(Main.Constants.BLACK)
+        DISPLAY_SURFACE.fill(Main.constants.BLACK)
         ENGINE.draw(VIEWPORT)
         ENGINE.show_number_of_object_in_list(DISPLAY_SURFACE, DEFAULT_FONT)
 

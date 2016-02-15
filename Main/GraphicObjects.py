@@ -1,15 +1,15 @@
-import Main.Constants
-from Main.GeometryTransformation2D import Vector2D, GeometryTransformation2D
+import Main.constants
+from Main.geometrytransformation2d import Vector2D, GeometryTransformation2D
 
 # -----------------------------------------------------------------
 
 
 class GraphicObject(object):
     """ GraphicObject: the base class for every object on the screen """
-    _geometry2D = GeometryTransformation2D(Main.Constants.LOOKUP_TABLE)
-    _color = Main.Constants.WHITE
+    _geometry2D = GeometryTransformation2D(Main.constants.LOOKUP_TABLE)
+    _color = Main.constants.WHITE
 
-    def __init__(self, x=0, y=0, color=Main.Constants.WHITE, lookup_table=Main.Constants.LOOKUP_TABLE, vertexes_local=None):
+    def __init__(self, x=0, y=0, color=Main.constants.WHITE, lookup_table=Main.constants.LOOKUP_TABLE, vertexes_local=None):
         self.position = Vector2D(x, y)
         self._color = color
         self._lookupTable = lookup_table
@@ -30,7 +30,7 @@ class GraphicObject(object):
     def rotate_object(self, relative_angle):
         self.rotation_angle = int((self.rotation_angle + relative_angle) % 360)
 
-    def update_position(self, delta_time):
+    def update_status(self, delta_time):
         # Must move the object in the heading direction based on the speed
         distance = self.speed * delta_time
         self._move(self.head_angle, distance)
@@ -54,17 +54,34 @@ class GraphicObject(object):
 
 class StarShip(GraphicObject):
     """ Class STAR SHIP """
+    RELOAD_COUNTER_DEFAULT_VALUE = 10
+
     def __init__(self, x, y, color, lookup_table):
         super().__init__(x, y, color, lookup_table)
         self.object_vertexes = (Vector2D(20, 0),
                                 Vector2D(-10, -10),
                                 Vector2D(0, 0),
                                 Vector2D(-10, 10))
+        self.reload_counter = self.RELOAD_COUNTER_DEFAULT_VALUE
+        self.is_reloading = False
 
     def fire(self):
-        start_position = self._get_world_coordinate(self.object_vertexes[0])
-        bullet = Bullet(start_position.x, start_position.y, self.head_angle)
-        return bullet
+        if not self.is_reloading:
+            start_position = self._get_world_coordinate(self.object_vertexes[0])
+            bullet = Bullet(start_position.x, start_position.y, self.head_angle)
+            self.is_reloading = True
+            return bullet
+
+    def update_status(self, delta_time):
+        self.update_reload_counter()
+        super().update_status(delta_time)
+
+    def update_reload_counter(self):
+        if self.is_reloading:
+            self.reload_counter -= 1
+            if self.reload_counter == 0:
+                self.is_reloading = False
+                self.reload_counter = self.RELOAD_COUNTER_DEFAULT_VALUE
 
 # -----------------------------------------------------------------
 

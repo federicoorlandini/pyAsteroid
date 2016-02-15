@@ -1,13 +1,11 @@
 class Vector2D(object):
-    x = 0
-    y = 0
-    
+
     def __init__(self, x=0, y=0):
         self.x = x
         self.y = y
 
-    def add(self, vector):
-        return Vector2D(self.x + vector.x, self.y + vector.y)
+    def __add__(self, other):
+        return Vector2D(self.x + other.x, self.y + other.y)
 
 
 class GeometryTransformation2D(object):
@@ -16,18 +14,6 @@ class GeometryTransformation2D(object):
         self.lookup_table = lookup_table
         
     def rotate(self, vertex, angle):
-        """
-        if angle < 0:
-            sin_sign = -1
-        else:
-            sin_sign = 1
-        
-        angle = abs(angle)
-        
-        x = vertex.x * self.lookup_table.cos[angle] - sin_sign * vertex.y * self.lookup_table.sin[angle]
-        y = sin_sign * vertex.x * self.lookup_table.sin[angle] + vertex.y * self.lookup_table.cos[angle]
-        """
-
         x = vertex.x * self.lookup_table.cos[angle] - vertex.y * self.lookup_table.sin[angle]
         y = vertex.x * self.lookup_table.sin[angle] + vertex.y * self.lookup_table.cos[angle]
 
