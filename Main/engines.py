@@ -15,6 +15,7 @@ class Engine(object):
     _graph_objects_list = []
        
     def __init__(self):
+        self.world = World()
         self.starship = Main.graphicobjects.StarShip(0, 0, Main.constants.WHITE, Main.constants.LOOKUP_TABLE)
         self._graph_objects_list.append(self.starship)
     
@@ -47,15 +48,36 @@ class Engine(object):
             if not viewport.is_object_visible(obj):
                 self._graph_objects_list.remove(obj)
             else:
-                obj.draw(viewport)
+                obj.render(viewport)
          
     def update_world(self, delta_time):
         for obj in self._graph_objects_list:
-            obj.update_status(delta_time)
+            obj.process(delta_time)
 
     def show_number_of_object_in_list(self, display_surface, font):
         label_surface = font.render("Objects: %s" % len(self._graph_objects_list), 1, (255,255,255))
         display_surface.blit(label_surface, (0, 0))
+
+# -----------------------------------------------------------------
+
+
+class World:
+
+    def __init__(self, screen_size):
+        background = pygame.Surface(screen_size)
+        self.background = background.convert()
+        self.background.fill(0,0,0)
+        self.object_list = {}
+        self._object_counter = 0
+
+    def add_object(self, graphical_object):
+        self._object_counter += 1
+        graphical_object.id = self._object_counter
+        self.object_list[graphical_object.id] = graphical_object
+
+    def render(self, screen):
+        screen.blit(self.background)
+
 
 # -----------------------------------------------------------------
 

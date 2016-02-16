@@ -3,7 +3,6 @@ import math
 from Main import values
 from Main.graphicobjects import GraphicObject
 from Main.geometrytransformation2d import Vector2D
-from Main.viewport import ViewPort
 
 
 class GraphicObjectTests(unittest.TestCase):
@@ -28,9 +27,7 @@ class GraphicObjectTests(unittest.TestCase):
 
         self.assertEqual(obj.head_angle, rotation_angle)
 
-class StarShipTests(unittest):
-
-
+class StarShipTests(unittest.TestCase):
     def test_fire_withReloadCounterNotZero_shouldNotFireABullet(self):
         raise AssertionError('To be implemented')
 

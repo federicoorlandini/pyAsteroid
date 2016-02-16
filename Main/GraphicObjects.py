@@ -30,7 +30,7 @@ class GraphicObject(object):
     def rotate_object(self, relative_angle):
         self.rotation_angle = int((self.rotation_angle + relative_angle) % 360)
 
-    def update_status(self, delta_time):
+    def process(self, delta_time):
         # Must move the object in the heading direction based on the speed
         distance = self.speed * delta_time
         self._move(self.head_angle, distance)
@@ -44,7 +44,7 @@ class GraphicObject(object):
     def get_world_vertexes(self):
         return [self._get_world_coordinate(v) for v in self.object_vertexes]
 
-    def draw(self, viewport):
+    def render(self, viewport):
         # For each vertex, we must rotate it and translate it
         world_vertexes = self.get_world_vertexes();
         viewport.draw_world_vertexes(world_vertexes, self._color)
@@ -72,11 +72,11 @@ class StarShip(GraphicObject):
             self.is_reloading = True
             return bullet
 
-    def update_status(self, delta_time):
-        self.update_reload_counter()
-        super().update_status(delta_time)
+    def process(self, delta_time):
+        self._update_reload_counter()
+        super().process(delta_time)
 
-    def update_reload_counter(self):
+    def _update_reload_counter(self):
         if self.is_reloading:
             self.reload_counter -= 1
             if self.reload_counter == 0:

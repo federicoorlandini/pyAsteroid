@@ -3,11 +3,6 @@ import pygame
 
 
 class ViewPort(object):
-    width = 0
-    height = 0
-    
-    draw_surface = None
-    
     def __init__(self, width=0, height=0, draw_surface=None):
         self.width = width
         self.height = height
