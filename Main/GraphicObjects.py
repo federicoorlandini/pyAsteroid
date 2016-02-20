@@ -63,26 +63,27 @@ class StarShip(GraphicObject):
                                 Vector2D(0, 0),
                                 Vector2D(-10, 10))
         self.reload_counter = self.RELOAD_COUNTER_DEFAULT_VALUE
-        self.is_reloading = False
 
     def fire(self):
-        if not self.is_reloading:
+        if not self.is_reloading():
             start_position = self._get_world_coordinate(self.object_vertexes[0])
             bullet = Bullet(start_position.x, start_position.y, self.head_angle)
-            self.is_reloading = True
+            self._reset_reload_counter()
             return bullet
 
     def process(self, delta_time):
         self._update_reload_counter()
         super().process(delta_time)
 
-    def _update_reload_counter(self):
-        if self.is_reloading:
-            self.reload_counter -= 1
-            if self.reload_counter == 0:
-                self.is_reloading = False
-                self.reload_counter = self.RELOAD_COUNTER_DEFAULT_VALUE
+    def is_reloading(self):
+        return self.reload_counter > 0
 
+    def _update_reload_counter(self):
+        if self.is_reloading():
+            self.reload_counter -= 1
+
+    def _reset_reload_counter(self):
+        self.reload_counter = self.RELOAD_COUNTER_DEFAULT_VALUE
 # -----------------------------------------------------------------
 
 
@@ -104,4 +105,4 @@ class Asteroid(GraphicObject):
         super(Asteroid, self).__init__(x, y)
         self.head_angle = angle_of_direction
         self.speed = speed
-        self.object_vertexes = (Vector2D(1, 1), Vector2D(-1, 1), Vector2D(-1, -1), Vector2D(1, -1))  # A rectangle
+        self.object_vertexes = (Vector2D(10, 10), Vector2D(-10, 10), Vector2D(-10, -10), Vector2D(10, -10))  # A rectangle

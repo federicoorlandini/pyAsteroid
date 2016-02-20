@@ -15,15 +15,15 @@ class ViewPort(object):
     
     def draw_world_vertexes(self, world_vertex_list, color):
         points = []
-        for v in world_vertex_list:
-            p = self.to_screen_coordinate(v)
+        for vertex in world_vertex_list:
+            p = self.to_screen_coordinate(vertex)
             points.append((p.x, p.y))
         pygame.draw.lines(self.draw_surface, color, True, points, 1)
 
     def is_object_visible(self, graphic_object):
         world_vertexes = graphic_object.get_world_vertexes()
         for vertex in world_vertexes:
-            screen_coord = self.to_screen_coordinate(vertex);
+            screen_coord = self.to_screen_coordinate(vertex)
             if screen_coord.x < self.width and screen_coord.x > 0 and screen_coord.y > 0 and screen_coord.y < self.height:
                 return True
         # If the code arrive here, it means that there is at least one vertex that is visible

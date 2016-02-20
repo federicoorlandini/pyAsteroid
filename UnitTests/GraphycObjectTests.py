@@ -1,7 +1,10 @@
 import unittest
 import math
 from Main import values
+from Main import constants
+from Main import lookuptables
 from Main.graphicobjects import GraphicObject
+from Main.graphicobjects import StarShip
 from Main.geometrytransformation2d import Vector2D
 
 
@@ -28,14 +31,27 @@ class GraphicObjectTests(unittest.TestCase):
         self.assertEqual(obj.head_angle, rotation_angle)
 
 class StarShipTests(unittest.TestCase):
+
+    _lookup_table = lookuptables.CosSinTable()
+
     def test_fire_withReloadCounterNotZero_shouldNotFireABullet(self):
-        raise AssertionError('To be implemented')
+        ship = StarShip(0, 0, constants.WHITE, self._lookup_table)
+        ship.reload_counter = 1
+        bullet = ship.fire()
+        self.assertIsNone(bullet)
 
     def test_fire_withReloadCounterZero_shouldFireABullet(self):
-        raise AssertionError('To be implemented')
+        ship = StarShip(0, 0, constants.WHITE, self._lookup_table)
+        ship.reload_counter = 0
+        bullet = ship.fire()
+        self.assertIsNotNone(bullet)
 
     def test_fire_withReloadCounterZero_shouldResetTheReloadCounter(self):
-        raise AssertionError('To be implemented')
+        ship = StarShip(0, 0, constants.WHITE, self._lookup_table)
+        ship.reload_counter = 0
+        bullet = ship.fire()
+        self.assertNotEqual(ship.reload_counter, 0)
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
