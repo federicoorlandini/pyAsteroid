@@ -1,7 +1,6 @@
 import unittest
 import math
-from Main import angles
-from Main import values
+from Main import angles, values
 
 
 class Test(unittest.TestCase):
@@ -17,7 +16,6 @@ class Test(unittest.TestCase):
         angle_in_radiant = angles.from_degree_to_radiant(angle_in_degree)
         
         self.assertTrue(values.are_equals(angle_in_radiant, expected_angle_in_radiant), "Wrong angle")
-
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_ConvertToDegree']

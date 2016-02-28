@@ -2,6 +2,7 @@ import math
 import Main.angles
 
 
+# -----------------------------------------------------------------------
 class CosSinTable(object):
     """ This class contains a lookup table for Sin and Cos values.
         The index in the array is the angle in degree """

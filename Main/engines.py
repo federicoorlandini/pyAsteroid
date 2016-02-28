@@ -8,6 +8,7 @@ from Main import viewport, constants
 
 logging.getLogger().setLevel(logging.DEBUG)
 
+
 # -----------------------------------------------------------------
 
 
@@ -44,23 +45,23 @@ class Engine(object):
 
     def draw(self, viewport):
         self.world.render(viewport)
-         
+
     def update_world(self, time_passed):
         self.world.process(time_passed)
 
     def show_number_of_object_in_list(self, display_surface, font):
-        label_surface = font.render("Objects: %s" % len(self.world.object_list), 1, (255,255,255))
+        label_surface = font.render("Objects: %s" % len(self.world.object_list), 1, (255, 255, 255))
         display_surface.blit(label_surface, (0, 0))
+
 
 # -----------------------------------------------------------------
 
 
 class World:
-
     def __init__(self, screen_size):
         background = pygame.Surface(screen_size)
         self.background = background.convert()
-        self.background.fill((0,0,0))
+        self.background.fill((0, 0, 0))
         self.object_list = {}
         self._object_counter = 0
         # Add the objects in the world
@@ -68,12 +69,10 @@ class World:
         self.add_object(self.starship)
         self.asteroid_generator = Main.logic.AsteroidGenerator(30, 1)
 
-
     def add_object(self, graphical_object):
         self._object_counter += 1
         graphical_object.id = self._object_counter
         self.object_list[graphical_object.id] = graphical_object
-
 
     def process(self, time_passed):
         # Check if there is a new asteroid
@@ -86,10 +85,9 @@ class World:
         for key in self.object_list:
             self.object_list[key].process(time_passed)
 
-
     def render(self, viewport):
         # Draw the background
-        viewport.draw_surface.blit(self.background, (0,0))
+        viewport.draw_surface.blit(self.background, (0, 0))
 
         # Remove the not visible objects from the world
         self._remove_objects_not_visible(viewport)
@@ -99,25 +97,27 @@ class World:
             obj = self.object_list[key]
             obj.render(viewport)
 
-
     def _remove_objects_not_visible(self, viewport):
-        keys_of_objects_to_remove = [key for key in self.object_list if not viewport.is_object_visible(self.object_list[key])]
+        keys_of_objects_to_remove = [key for key in self.object_list if
+                                     not viewport.is_object_visible(self.object_list[key])]
         for key in keys_of_objects_to_remove:
             del self.object_list[key]
 
+    def detect_collision(self):
+        raise Exception('Not implemented')
 # -----------------------------------------------------------------
 
 
 def main():
     """ Main game loop """
     pygame.init()
-    
+
     # The default font
     DEFAULT_FONT = pygame.font.SysFont("arial", 15)
 
     # Prepare the drawing surface
     DISPLAY_SURFACE = pygame.display.set_mode((constants.VIEWPORT_WIDTH, constants.VIEWPORT_HEIGHT))
-    
+
     # Prepare the viewport
     VIEWPORT = viewport.ViewPort(constants.VIEWPORT_WIDTH, constants.VIEWPORT_HEIGHT, DISPLAY_SURFACE)
 
@@ -149,8 +149,7 @@ def main():
 
         pygame.display.update()
 
-  
-    
+
 # -----------------------------------------------------------------
 if __name__ == "__main__":
     main()

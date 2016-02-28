@@ -1,32 +1,58 @@
 import Main.constants
-from Main.geometrytransformation2d import Vector2D, GeometryTransformation2D
+import math
+from Main.geometrytransformation2d import Vector2D, GeometryTransformation2D, Circle
+
 
 # -----------------------------------------------------------------
-
-
 class GraphicObject(object):
     """ GraphicObject: the base class for every object on the screen """
     _geometry2D = GeometryTransformation2D(Main.constants.LOOKUP_TABLE)
     _color = Main.constants.WHITE
 
-    def __init__(self, x=0, y=0, color=Main.constants.WHITE, lookup_table=Main.constants.LOOKUP_TABLE, vertexes_local=None):
+    def __init__(self, x=0, y=0, color=Main.constants.WHITE, lookup_table=Main.constants.LOOKUP_TABLE,
+                 vertexes_local=None):
         self.position = Vector2D(x, y)
+        self._collision_circle = self._compute_collision_circle(x, y, vertexes_local)
         self._color = color
         self._lookupTable = lookup_table
-        self.object_vertexes = vertexes_local   # These are the vertex that are relative to the object coordinates
-        self.head_angle = 0 # This is the angle that determine the direction of the object
+        self.object_vertexes = vertexes_local  # These are the vertex that are relative to the object coordinates
+        self.head_angle = 0  # This is the angle that determine the direction of the object
         self.rotation_angle = 0  # This is the angle of rotation of the object on its center point
         self.speed = 0  # The movement speed in pixel/sec
 
     """ This method move the Graphical object """
+
     def _move(self, angle, length):
         self.position = self._geometry2D.move_in_a_direction(self.position, angle, length)
 
-    """ This method rotate the head direction of the Graphical object """
+    """ This method compute the circle for the collision detection """
+
+    def _compute_collision_circle(self, x, y, vertexes_local):
+        if vertexes_local is None:
+            return None
+
+        # Compute the radius getting the max of the distance of each vertex from the origin of the object
+        distances = [v.magnitude_power_2() for v in vertexes_local]
+        radius = math.sqrt(max(distances))
+        center = Vector2D(x, y)
+        return Circle(center, radius)
+
+    def get_collision_circle(self):
+        return self._collision_circle
+
+    def _get_world_coordinate(self, world_vertex):
+        # Build the vertex coordinate relative to the world axis (where (0,0) is the center of the screen)
+        rotated_vertex = self._geometry2D.rotate(world_vertex, self.head_angle)
+        world_vertex = self._geometry2D.translate(rotated_vertex, self.position.x, self.position.y)
+        return world_vertex
+
+    " This method rotate the head direction of the Graphical object "
+
     def rotate_head_direction(self, relative_angle):
         self.head_angle = int((self.head_angle + relative_angle) % 360)
 
-    """ This method rotate the Graphical object around its position point """
+    " This method rotate the Graphical object around its position point "
+
     def rotate_object(self, relative_angle):
         self.rotation_angle = int((self.rotation_angle + relative_angle) % 360)
 
@@ -35,12 +61,6 @@ class GraphicObject(object):
         distance = self.speed * delta_time
         self._move(self.head_angle, distance)
 
-    def _get_world_coordinate(self, world_vertex):
-        # Build the vertex coordinate relative to the world axis (where (0,0) is the center of the screen)
-        rotated_vertex = self._geometry2D.rotate(world_vertex, self.head_angle)
-        world_vertex = self._geometry2D.translate(rotated_vertex, self.position.x, self.position.y)
-        return world_vertex
-
     def get_world_vertexes(self):
         return [self._get_world_coordinate(v) for v in self.object_vertexes]
 
@@ -48,6 +68,7 @@ class GraphicObject(object):
         # For each vertex, we must rotate it and translate it
         world_vertexes = self.get_world_vertexes();
         viewport.draw_world_vertexes(world_vertexes, self._color)
+
 
 # -----------------------------------------------------------------
 
@@ -84,6 +105,8 @@ class StarShip(GraphicObject):
 
     def _reset_reload_counter(self):
         self.reload_counter = self.RELOAD_COUNTER_DEFAULT_VALUE
+
+
 # -----------------------------------------------------------------
 
 
@@ -105,4 +128,5 @@ class Asteroid(GraphicObject):
         super(Asteroid, self).__init__(x, y)
         self.head_angle = angle_of_direction
         self.speed = speed
-        self.object_vertexes = (Vector2D(10, 10), Vector2D(-10, 10), Vector2D(-10, -10), Vector2D(10, -10))  # A rectangle
+        self.object_vertexes = (
+        Vector2D(10, 10), Vector2D(-10, 10), Vector2D(-10, -10), Vector2D(10, -10))  # A rectangle
