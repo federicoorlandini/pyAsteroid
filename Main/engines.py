@@ -68,6 +68,7 @@ class World:
         self.starship = Main.graphicobjects.StarShip(0, 0, Main.constants.WHITE, Main.constants.LOOKUP_TABLE)
         self.add_object(self.starship)
         self.asteroid_generator = Main.logic.AsteroidGenerator(30, 1)
+        self.collision_handler = CollisionHandler(self)
 
     def add_object(self, graphical_object):
         self._object_counter += 1
@@ -84,6 +85,9 @@ class World:
         # Process all the objects in the world
         for key in self.object_list:
             self.object_list[key].process(time_passed)
+
+        # Collision handling
+        self.collision_handler.handle()
 
     def render(self, viewport):
         # Draw the background
@@ -103,9 +107,28 @@ class World:
         for key in keys_of_objects_to_remove:
             del self.object_list[key]
 
-    def detect_collision(self):
-        raise Exception('Not implemented')
 # -----------------------------------------------------------------
+
+
+class CollisionHandler(object):
+    def __init__(self, world):
+        self._world = world
+
+    def handle(self):
+        collision_matrix = self._build_collision_matrix()
+        raise Exception('not implemented')
+
+    def _build_collision_matrix(self):
+        # We must prepare a matrix with the following schema:
+        # Mij = 1 if object-i collides with object-j
+        # and where i >= j
+        # So means a half matrix like this:
+        # C11
+        # C21 C22
+        # C31 C32 C33
+        # C41 C42 C43 C44
+        # etc.
+        raise Exception('not implemented')
 
 
 def main():
