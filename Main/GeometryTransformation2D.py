@@ -1,4 +1,5 @@
 import Main
+import Main.values
 
 
 class Vector2D(object):

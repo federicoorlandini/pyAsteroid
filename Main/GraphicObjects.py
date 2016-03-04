@@ -19,6 +19,7 @@ class GraphicObject(object):
         self.head_angle = 0  # This is the angle that determine the direction of the object
         self.rotation_angle = 0  # This is the angle of rotation of the object on its center point
         self.speed = 0  # The movement speed in pixel/sec
+        self.id = 0 # The unique ID of the object
 
     """ This method move the Graphical object """
 
@@ -69,6 +70,8 @@ class GraphicObject(object):
         world_vertexes = self.get_world_vertexes();
         viewport.draw_world_vertexes(world_vertexes, self._color)
 
+    def collision_handler(self):
+        pass
 
 # -----------------------------------------------------------------
 
@@ -78,11 +81,12 @@ class StarShip(GraphicObject):
     RELOAD_COUNTER_DEFAULT_VALUE = 10
 
     def __init__(self, x, y, color, lookup_table):
-        super().__init__(x, y, color, lookup_table)
-        self.object_vertexes = (Vector2D(20, 0),
-                                Vector2D(-10, -10),
-                                Vector2D(0, 0),
-                                Vector2D(-10, 10))
+        object_vertexes = (Vector2D(20, 0),
+                           Vector2D(-10, -10),
+                           Vector2D(0, 0),
+                           Vector2D(-10, 10))
+        super().__init__(x, y, color, lookup_table, vertexes_local=object_vertexes)
+
         self.reload_counter = self.RELOAD_COUNTER_DEFAULT_VALUE
 
     def fire(self):
@@ -114,10 +118,10 @@ class Bullet(GraphicObject):
     """ This is a single bullet that is fired from the Star ship """
 
     def __init__(self, x, y, angle_of_direction, speed=150):
-        super().__init__(x, y)
+        object_vertexes = (Vector2D(-3, 0), Vector2D(3, 0))
+        super().__init__(x, y,vertexes_local=object_vertexes)
         self.head_angle = angle_of_direction
         self.speed = speed
-        self.object_vertexes = (Vector2D(-3, 0), Vector2D(3, 0))
 
 
 # -----------------------------------------------------------------
@@ -125,8 +129,7 @@ class Bullet(GraphicObject):
 
 class Asteroid(GraphicObject):
     def __init__(self, x, y, angle_of_direction, speed):
-        super(Asteroid, self).__init__(x, y)
+        object_vertexes = (Vector2D(10, 10), Vector2D(-10, 10), Vector2D(-10, -10), Vector2D(10, -10))  # A rectangle
+        super().__init__(x, y, vertexes_local=object_vertexes)
         self.head_angle = angle_of_direction
         self.speed = speed
-        self.object_vertexes = (
-        Vector2D(10, 10), Vector2D(-10, 10), Vector2D(-10, -10), Vector2D(10, -10))  # A rectangle

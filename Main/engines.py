@@ -115,24 +115,61 @@ class CollisionHandler(object):
         self._world = world
 
     def handle(self):
-        collision_matrix = self._build_collision_matrix()
+        collision_list = self._build_collision_list()
+        if len(collision_list) == 0:
+            return
+
         raise Exception('not implemented')
 
-    def _build_collision_matrix(self):
-        # We must prepare a matrix with the following schema:
-        # Mij = 1 if object-i collides with object-j
-        # and where i >= j
-        # So means a half matrix like this:
-        # C11
-        # C21 C22
-        # C31 C32 C33
-        # C41 C42 C43 C44
-        # etc.
-        raise Exception('not implemented')
+    def _build_collision_list(self):
+        # We prepare a list of object index
+        collisions = set()
+
+        for first_object_id in self._world.object_list:
+            if first_object_id in collisions:
+                continue
+            for second_object_id in self._world.object_list:
+                if second_object_id in collisions:
+                    continue
+
+                if first_object_id == second_object_id:
+                    continue
+
+                first_circle = self._world.object_list[first_object_id].get_collision_circle()
+                second_circle = self._world.object_list[second_object_id].get_collision_circle()
+                is_collision = first_circle.is_intersecting_circle(second_circle)
+
+                if is_collision:
+                    collisions.add(first_object_id)
+                    collisions.add(second_object_id)
+
+        """
+        object_list = list(self._world.object_list.values())
+        number_objects_in_world = len(object_list)
+
+        for row_index in range(0, number_objects_in_world):
+            if object_list[row_index].id in collisions:
+                continue    # The object is already marked as 'in collision'
+            for column_index in range(0, number_objects_in_world):
+                if row_index == column_index :
+                    continue    # An object cannot collide with itself
+
+                if object_list[column_index] in collisions:
+                    continue    # The object is already marked as 'in collision'
+
+                circle_for_row_index_object = object_list[row_index].get_collision_circle()
+                circle_for_column_index_object = object_list[column_index].get_collision_circle()
+                is_collision = circle_for_row_index_object.is_intersecting_circle(circle_for_column_index_object)
+                if is_collision:
+                    collisions.append(row_index)
+                    collisions.append(column_index)
+        """
+
+        return collisions
 
 
 def main():
-    """ Main game loop """
+    # Main game loop
     pygame.init()
 
     # The default font
