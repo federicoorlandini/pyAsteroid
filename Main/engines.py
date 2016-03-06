@@ -5,6 +5,8 @@ import Main.constants
 import Main.graphicobjects
 import Main.logic
 from Main import viewport, constants
+from Main.collisions import CollisionHandler
+
 
 logging.getLogger().setLevel(logging.DEBUG)
 
@@ -65,9 +67,9 @@ class World:
         self.object_list = {}
         self._object_counter = 0
         # Add the objects in the world
-        self.starship = Main.graphicobjects.StarShip(0, 0, Main.constants.WHITE, Main.constants.LOOKUP_TABLE)
+        self.starship = Main.graphicobjects.StarShip(self, 0, 0, Main.constants.WHITE, Main.constants.LOOKUP_TABLE)
         self.add_object(self.starship)
-        self.asteroid_generator = Main.logic.AsteroidGenerator(30, 1)
+        self.asteroid_generator = Main.logic.AsteroidGenerator(self, 30, 1)
         self.collision_handler = CollisionHandler(self)
 
     def add_object(self, graphical_object):
@@ -108,64 +110,6 @@ class World:
             del self.object_list[key]
 
 # -----------------------------------------------------------------
-
-
-class CollisionHandler(object):
-    def __init__(self, world):
-        self._world = world
-
-    def handle(self):
-        collision_list = self._build_collision_list()
-        if len(collision_list) == 0:
-            return
-
-        raise Exception('not implemented')
-
-    def _build_collision_list(self):
-        # We prepare a list of object index
-        collisions = set()
-
-        for first_object_id in self._world.object_list:
-            if first_object_id in collisions:
-                continue
-            for second_object_id in self._world.object_list:
-                if second_object_id in collisions:
-                    continue
-
-                if first_object_id == second_object_id:
-                    continue
-
-                first_circle = self._world.object_list[first_object_id].get_collision_circle()
-                second_circle = self._world.object_list[second_object_id].get_collision_circle()
-                is_collision = first_circle.is_intersecting_circle(second_circle)
-
-                if is_collision:
-                    collisions.add(first_object_id)
-                    collisions.add(second_object_id)
-
-        """
-        object_list = list(self._world.object_list.values())
-        number_objects_in_world = len(object_list)
-
-        for row_index in range(0, number_objects_in_world):
-            if object_list[row_index].id in collisions:
-                continue    # The object is already marked as 'in collision'
-            for column_index in range(0, number_objects_in_world):
-                if row_index == column_index :
-                    continue    # An object cannot collide with itself
-
-                if object_list[column_index] in collisions:
-                    continue    # The object is already marked as 'in collision'
-
-                circle_for_row_index_object = object_list[row_index].get_collision_circle()
-                circle_for_column_index_object = object_list[column_index].get_collision_circle()
-                is_collision = circle_for_row_index_object.is_intersecting_circle(circle_for_column_index_object)
-                if is_collision:
-                    collisions.append(row_index)
-                    collisions.append(column_index)
-        """
-
-        return collisions
 
 
 def main():

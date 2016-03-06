@@ -9,7 +9,7 @@ class GraphicObject(object):
     _geometry2D = GeometryTransformation2D(Main.constants.LOOKUP_TABLE)
     _color = Main.constants.WHITE
 
-    def __init__(self, x=0, y=0, color=Main.constants.WHITE, lookup_table=Main.constants.LOOKUP_TABLE,
+    def __init__(self, world, x=0, y=0, color=Main.constants.WHITE, lookup_table=Main.constants.LOOKUP_TABLE,
                  vertexes_local=None):
         self.position = Vector2D(x, y)
         self._collision_circle = self._compute_collision_circle(x, y, vertexes_local)
@@ -20,6 +20,7 @@ class GraphicObject(object):
         self.rotation_angle = 0  # This is the angle of rotation of the object on its center point
         self.speed = 0  # The movement speed in pixel/sec
         self.id = 0 # The unique ID of the object
+        self._world = world
 
     """ This method move the Graphical object """
 
@@ -67,10 +68,10 @@ class GraphicObject(object):
 
     def render(self, viewport):
         # For each vertex, we must rotate it and translate it
-        world_vertexes = self.get_world_vertexes();
+        world_vertexes = self.get_world_vertexes()
         viewport.draw_world_vertexes(world_vertexes, self._color)
 
-    def collision_handler(self):
+    def collision_handler(self, collision_info):
         pass
 
 # -----------------------------------------------------------------
@@ -80,19 +81,19 @@ class StarShip(GraphicObject):
     """ Class STAR SHIP """
     RELOAD_COUNTER_DEFAULT_VALUE = 10
 
-    def __init__(self, x, y, color, lookup_table):
+    def __init__(self, world, x, y, color, lookup_table):
         object_vertexes = (Vector2D(20, 0),
                            Vector2D(-10, -10),
                            Vector2D(0, 0),
                            Vector2D(-10, 10))
-        super().__init__(x, y, color, lookup_table, vertexes_local=object_vertexes)
+        super().__init__(world, x, y, color, lookup_table, vertexes_local=object_vertexes)
 
         self.reload_counter = self.RELOAD_COUNTER_DEFAULT_VALUE
 
     def fire(self):
         if not self.is_reloading():
             start_position = self._get_world_coordinate(self.object_vertexes[0])
-            bullet = Bullet(start_position.x, start_position.y, self.head_angle)
+            bullet = Bullet(self._world, start_position.x, start_position.y, self.head_angle)
             self._reset_reload_counter()
             return bullet
 
@@ -102,6 +103,13 @@ class StarShip(GraphicObject):
 
     def is_reloading(self):
         return self.reload_counter > 0
+
+    def collision_handler(self, collision_info):
+        # Retrieve the type of the other object that collided
+        other_object = self._world.object_list[collision_info.second_collider_object_id]
+        if( isinstance(other_object, Bullet) ):
+            return
+        raise Exception('Not implemented')
 
     def _update_reload_counter(self):
         if self.is_reloading():
@@ -117,19 +125,26 @@ class StarShip(GraphicObject):
 class Bullet(GraphicObject):
     """ This is a single bullet that is fired from the Star ship """
 
-    def __init__(self, x, y, angle_of_direction, speed=150):
+    def __init__(self, world, x, y, angle_of_direction, speed=150):
         object_vertexes = (Vector2D(-3, 0), Vector2D(3, 0))
-        super().__init__(x, y,vertexes_local=object_vertexes)
+        super().__init__(world, x, y ,vertexes_local=object_vertexes)
         self.head_angle = angle_of_direction
         self.speed = speed
 
+    def collision_handler(self, collision_info):
+        other_object = self._world.object_list[collision_info.second_collider_object_id]
+        if isinstance(other_object, Asteroid):
+            del self._world.object_list[collision_info.second_collider_object_id]
 
 # -----------------------------------------------------------------
 
 
 class Asteroid(GraphicObject):
-    def __init__(self, x, y, angle_of_direction, speed):
+    def __init__(self, world, x, y, angle_of_direction, speed):
         object_vertexes = (Vector2D(10, 10), Vector2D(-10, 10), Vector2D(-10, -10), Vector2D(10, -10))  # A rectangle
-        super().__init__(x, y, vertexes_local=object_vertexes)
+        super().__init__(world, x, y, vertexes_local=object_vertexes)
         self.head_angle = angle_of_direction
         self.speed = speed
+
+    def collision_handler(self, collision_info):
+        pass
