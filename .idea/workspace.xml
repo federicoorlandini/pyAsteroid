@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61e7ee92-2853-4340-a817-b741315ab216" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Main/collisions.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/engines.py" afterPath="$PROJECT_DIR$/Main/engines.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/graphicobjects.py" afterPath="$PROJECT_DIR$/Main/graphicobjects.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/logic.py" afterPath="$PROJECT_DIR$/Main/logic.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UnitTests/graphycobjecttests.py" afterPath="$PROJECT_DIR$/UnitTests/graphycobjecttests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/collisions.py" afterPath="$PROJECT_DIR$/Main/collisions.py" />
     </list>
     <ignored path="pyAsteroid.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,9 +27,21 @@
         <entry file="file://$PROJECT_DIR$/Main/engines.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="graphycobjecttests.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/UnitTests/graphycobjecttests.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6333333">
+              <caret line="43" column="56" selection-start-line="43" selection-start-column="56" selection-end-line="43" selection-end-column="56" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -44,7 +51,7 @@
         <entry file="file://$PROJECT_DIR$/Main/collisions.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+              <caret line="43" column="82" selection-start-line="43" selection-start-column="82" selection-end-line="43" selection-end-column="82" />
               <folding />
             </state>
           </provider>
@@ -54,27 +61,19 @@
         <entry file="file://$PROJECT_DIR$/UnitTests/collisionhandlertests.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-              <folding />
+              <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mock.py" pinned="false" current-in-tab="false">
-        <entry file="file://C:/Python34/Lib/unittest/mock.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1137" column="0" selection-start-line="1137" selection-start-column="0" selection-end-line="1137" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="graphicobjects.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="graphicobjects.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main/graphicobjects.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3323077">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -86,18 +85,6 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="geometrytransformation2d.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Main/geometrytransformation2d.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -135,7 +122,6 @@
         <option value="$PROJECT_DIR$/Main/engine.py" />
         <option value="$PROJECT_DIR$/Main/constants.py" />
         <option value="$PROJECT_DIR$/UnitTests/asteroidgeneratortests.py" />
-        <option value="$PROJECT_DIR$/UnitTests/graphycobjecttests.py" />
         <option value="$PROJECT_DIR$/Main/angles.py" />
         <option value="$PROJECT_DIR$/Main/lookuptables.py" />
         <option value="$PROJECT_DIR$/Main/viewport.py" />
@@ -144,10 +130,11 @@
         <option value="$PROJECT_DIR$/UnitTests/worldtests.py" />
         <option value="$PROJECT_DIR$/UnitTests/collisionhandlertests.py" />
         <option value="$PROJECT_DIR$/Main/geometrytransformation2d.py" />
-        <option value="$PROJECT_DIR$/Main/collisions.py" />
         <option value="$PROJECT_DIR$/Main/logic.py" />
         <option value="$PROJECT_DIR$/Main/engines.py" />
         <option value="$PROJECT_DIR$/Main/graphicobjects.py" />
+        <option value="$PROJECT_DIR$/Main/collisions.py" />
+        <option value="$PROJECT_DIR$/UnitTests/graphycobjecttests.py" />
       </list>
     </option>
   </component>
@@ -196,6 +183,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -244,7 +232,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -274,7 +261,7 @@
       <recent name="D:\Progetti\Phyton\pyAsteroid\Main\Constants" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittest CollisionHandlerTest.test_handle_with_three_object_that_collide_should_call_the_correct_collision_handler_on_the_objects">
+  <component name="RunManager" selected="Python tests.Unittests in UnitTests">
     <configuration default="false" name="engines" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -307,28 +294,6 @@
       <option name="METHOD_NAME" value="" />
       <option name="FOLDER_NAME" value="$PROJECT_DIR$/UnitTests" />
       <option name="TEST_TYPE" value="TEST_FOLDER" />
-      <option name="PATTERN" value="*tests.py" />
-      <option name="USE_PATTERN" value="true" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest GeometryTransformation2DTests.test_two_circles_tangent_should_intersect" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/UnitTests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pyAsteroid" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/UnitTests/geometrytransformation2dtests.py" />
-      <option name="CLASS_NAME" value="GeometryTransformation2DTests" />
-      <option name="METHOD_NAME" value="test_two_circles_tangent_should_intersect" />
-      <option name="FOLDER_NAME" value="$PROJECT_DIR$/UnitTests" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="*tests.py" />
       <option name="USE_PATTERN" value="true" />
       <option name="PUREUNITTEST" value="true" />
@@ -375,6 +340,28 @@
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="*tests.py" />
       <option name="USE_PATTERN" value="true" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest GraphicObjectTests.test_process_should_update_the_collision_circle" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/UnitTests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="pyAsteroid" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/UnitTests/graphycobjecttests.py" />
+      <option name="CLASS_NAME" value="GraphicObjectTests" />
+      <option name="METHOD_NAME" value="test_process_should_update_the_collision_circle" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
@@ -505,17 +492,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.engines" />
       <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in UnitTests" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest GeometryTransformation2DTests.test_two_circles_tangent_should_intersect" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest WorldTest.test_process_should_call_detect_collision" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest CollisionHandlerTest.test_handle_with_three_object_that_collide_should_call_the_correct_collision_handler_on_the_objects" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest WorldTest.test_process_should_call_detect_collision" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest CollisionHandlerTest.test_handle_with_three_object_that_collide_should_call_the_correct_collision_handler_on_the_objects" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest GraphicObjectTests.test_process_should_update_the_collision_circle" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest CollisionHandlerTest.test_handle_with_three_object_that_collide_should_call_the_correct_collision_handler_on_the_objects" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in UnitTests" />
-        <item index="2" class="java.lang.String" itemvalue="Python.engines" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest WorldTest.test_process_should_call_detect_collision" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest GeometryTransformation2DTests.test_two_circles_tangent_should_intersect" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in UnitTests" />
+        <item index="1" class="java.lang.String" itemvalue="Python.engines" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest GraphicObjectTests.test_process_should_update_the_collision_circle" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest CollisionHandlerTest.test_handle_with_three_object_that_collide_should_call_the_correct_collision_handler_on_the_objects" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest WorldTest.test_process_should_call_detect_collision" />
       </list>
     </recent_temporary>
   </component>
@@ -533,34 +520,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittest_CollisionHandlerTest_test_handle_with_three_object_that_collide_should_call_the_correct_collision_handler_on_the_objects - 2016.03.07 at 00h 18m 58s.xml">
-      <configuration name="Unittest CollisionHandlerTest.test_handle_with_three_object_that_collide_should_call_the_correct_collision_handler_on_the_objects" configurationId="tests" />
+    <history-entry file="Unittest_GraphicObjectTests_test_process_should_update_the_collision_circle - 2016.03.09 at 23h 38m 59s.xml">
+      <configuration name="Unittest GraphicObjectTests.test_process_should_update_the_collision_circle" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_CollisionHandlerTest_test_handle_with_three_object_that_collide_should_call_the_correct_collision_handler_on_the_objects - 2016.03.07 at 00h 19m 16s.xml">
-      <configuration name="Unittest CollisionHandlerTest.test_handle_with_three_object_that_collide_should_call_the_correct_collision_handler_on_the_objects" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittest_CollisionHandlerTest_test_handle_with_three_object_that_collide_should_call_the_correct_collision_handler_on_the_objects - 2016.03.07 at 00h 20m 25s.xml">
-      <configuration name="Unittest CollisionHandlerTest.test_handle_with_three_object_that_collide_should_call_the_correct_collision_handler_on_the_objects" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittest_CollisionHandlerTest_test_handle_with_three_object_that_collide_should_call_the_correct_collision_handler_on_the_objects - 2016.03.07 at 00h 20m 46s.xml">
-      <configuration name="Unittest CollisionHandlerTest.test_handle_with_three_object_that_collide_should_call_the_correct_collision_handler_on_the_objects" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_UnitTests - 2016.03.01 at 23h 48m 57s.xml">
+    <history-entry file="Unittests_in_UnitTests - 2016.03.09 at 23h 39m 43s.xml">
       <configuration name="Unittests in UnitTests" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_UnitTests - 2016.03.01 at 23h 55m 14s.xml">
+    <history-entry file="Unittests_in_UnitTests - 2016.03.09 at 23h 41m 13s.xml">
       <configuration name="Unittests in UnitTests" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_UnitTests - 2016.03.01 at 23h 56m 09s.xml">
+    <history-entry file="Unittests_in_UnitTests - 2016.03.09 at 23h 42m 05s.xml">
       <configuration name="Unittests in UnitTests" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_UnitTests - 2016.03.01 at 23h 56m 28s.xml">
+    <history-entry file="Unittests_in_UnitTests - 2016.03.09 at 23h 42m 26s.xml">
       <configuration name="Unittests in UnitTests" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_UnitTests - 2016.03.01 at 23h 56m 49s.xml">
+    <history-entry file="Unittests_in_UnitTests - 2016.03.09 at 23h 43m 56s.xml">
       <configuration name="Unittests in UnitTests" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_UnitTests - 2016.03.07 at 00h 17m 24s.xml">
+    <history-entry file="Unittests_in_UnitTests - 2016.03.09 at 23h 44m 23s.xml">
+      <configuration name="Unittests in UnitTests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_UnitTests - 2016.03.09 at 23h 45m 51s.xml">
+      <configuration name="Unittests in UnitTests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_UnitTests - 2016.03.09 at 23h 46m 05s.xml">
+      <configuration name="Unittests in UnitTests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_UnitTests - 2016.03.09 at 23h 46m 35s.xml">
       <configuration name="Unittests in UnitTests" configurationId="tests" />
     </history-entry>
   </component>
@@ -575,7 +562,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18601191" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991454" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -609,23 +596,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/Main/graphicobjects.py</url>
-          <line>135</line>
-          <option name="timeStamp" value="67" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/UnitTests/collisionhandlertests.py</url>
-          <line>23</line>
-          <option name="timeStamp" value="68" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/Main/collisions.py</url>
-          <line>45</line>
-          <option name="timeStamp" value="69" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -636,7 +606,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="70" />
+      <option name="time" value="74" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="tests">
@@ -927,13 +897,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/asteroidgeneratortests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5">
-          <caret line="13" column="66" selection-start-line="13" selection-start-column="66" selection-end-line="13" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/UnitTests/worldtests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32315978">
@@ -948,13 +911,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/graphycobjecttests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.032315977">
-          <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Main/values.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3">
@@ -962,9 +918,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/geometrytransformation2d.py">
+    <entry file="file://$PROJECT_DIR$/Main/collisions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="82" selection-start-line="43" selection-start-column="82" selection-end-line="43" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UnitTests/asteroidgeneratortests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6646154">
+          <caret line="13" column="66" selection-start-line="13" selection-start-column="66" selection-end-line="13" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main/engines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main/graphicobjects.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python34/Lib/unittest/mock.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.05">
+          <caret line="1137" column="0" selection-start-line="1137" selection-start-column="0" selection-end-line="1137" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main/geometrytransformation2d.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.25">
           <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
@@ -980,45 +978,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/engines.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/collisionhandlertests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
           <folding>
-            <element signature="e#0#20#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python34/Lib/unittest/mock.py">
+    <entry file="file://$PROJECT_DIR$/UnitTests/graphycobjecttests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1137" column="0" selection-start-line="1137" selection-start-column="0" selection-end-line="1137" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main/collisions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UnitTests/collisionhandlertests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main/graphicobjects.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3323077">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.6333333">
+          <caret line="43" column="56" selection-start-line="43" selection-start-column="56" selection-end-line="43" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

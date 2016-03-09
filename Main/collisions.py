@@ -42,8 +42,8 @@ class CollisionHandler(object):
                     continue
 
                 # Retrieve the collision circles and check if there is a collision
-                first_circle = self._world.object_list[first_object_id].get_collision_circle()
-                second_circle = self._world.object_list[second_object_id].get_collision_circle()
+                first_circle = self._world.object_list[first_object_id].collision_circle
+                second_circle = self._world.object_list[second_object_id].collision_circle
                 is_collision = first_circle.is_intersecting_circle(second_circle)
 
                 if is_collision:

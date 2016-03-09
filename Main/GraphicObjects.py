@@ -12,7 +12,6 @@ class GraphicObject(object):
     def __init__(self, world, x=0, y=0, color=Main.constants.WHITE, lookup_table=Main.constants.LOOKUP_TABLE,
                  vertexes_local=None):
         self.position = Vector2D(x, y)
-        self._collision_circle = self._compute_collision_circle(x, y, vertexes_local)
         self._color = color
         self._lookupTable = lookup_table
         self.object_vertexes = vertexes_local  # These are the vertex that are relative to the object coordinates
@@ -21,6 +20,7 @@ class GraphicObject(object):
         self.speed = 0  # The movement speed in pixel/sec
         self.id = 0 # The unique ID of the object
         self._world = world
+        self._compute_collision_circle()
 
     """ This method move the Graphical object """
 
@@ -29,18 +29,15 @@ class GraphicObject(object):
 
     """ This method compute the circle for the collision detection """
 
-    def _compute_collision_circle(self, x, y, vertexes_local):
-        if vertexes_local is None:
+    def _compute_collision_circle(self):
+        if self.object_vertexes is None:
             return None
 
         # Compute the radius getting the max of the distance of each vertex from the origin of the object
-        distances = [v.magnitude_power_2() for v in vertexes_local]
+        distances = [v.magnitude_power_2() for v in self.object_vertexes]
         radius = math.sqrt(max(distances))
-        center = Vector2D(x, y)
-        return Circle(center, radius)
-
-    def get_collision_circle(self):
-        return self._collision_circle
+        center = Vector2D(self.position.x, self.position.y)
+        self.collision_circle = Circle(center, radius)
 
     def _get_world_coordinate(self, world_vertex):
         # Build the vertex coordinate relative to the world axis (where (0,0) is the center of the screen)
@@ -62,6 +59,7 @@ class GraphicObject(object):
         # Must move the object in the heading direction based on the speed
         distance = self.speed * delta_time
         self._move(self.head_angle, distance)
+        self._compute_collision_circle()
 
     def get_world_vertexes(self):
         return [self._get_world_coordinate(v) for v in self.object_vertexes]
@@ -147,4 +145,4 @@ class Asteroid(GraphicObject):
         self.speed = speed
 
     def collision_handler(self, collision_info):
-        pass
+        raise Exception('not implemented')
