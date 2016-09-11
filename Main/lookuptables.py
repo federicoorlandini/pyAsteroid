@@ -1,7 +1,21 @@
 import math
 import Main.angles
 
+cos = {}
+sin = {}
 
+def _initializeLookupTables():
+    # We compute the lookup table for positive angles and negative angles
+    # to have an easier rotation algorithm
+    for i in range(-359, 359):
+        #  Convert in radiant
+        angle_radiant = Main.angles.from_degree_to_radiant(i)
+        cos[i] = math.cos(angle_radiant)
+        sin[i] = math.sin(angle_radiant)
+
+_initializeLookupTables()
+
+'''
 # -----------------------------------------------------------------------
 class CosSinTable(object):
     """ This class contains a lookup table for Sin and Cos values.
@@ -21,3 +35,4 @@ class CosSinTable(object):
             sin[i] = math.sin(angle_radiant)
         self.cos = cos
         self.sin = sin
+'''

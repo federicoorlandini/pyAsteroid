@@ -15,12 +15,13 @@ class CollisionHandler(object):
         if len(collision_list) == 0:
             return
 
+        world_object_list = self._world.get_objects_list()
         for collision_item in collision_list:
             # retrieve the object. Remember that the key of the dictionary
             # is the object ID of the object that detected a collision
-            object = self._world.object_list[collision_item]
+            object = world_object_list[collision_item]
             collision_info = collision_list[collision_item]
-            object.collision_handler(collision_info)
+            object.collision_handler(collision_info, self._world)
 
     def _build_collision_list(self):
         # We prepare a dictionary where the key is the ID of the object that has a collision
@@ -31,10 +32,10 @@ class CollisionHandler(object):
         # collide with two other different objects
         collisions = {}
 
-        for first_object_id in self._world.object_list:
+        for first_object_id in self._world.get_objects_list():
             if first_object_id in collisions:
                 continue
-            for second_object_id in self._world.object_list:
+            for second_object_id in self._world.get_objects_list():
                 if second_object_id in collisions:
                     continue
 
@@ -42,8 +43,9 @@ class CollisionHandler(object):
                     continue
 
                 # Retrieve the collision circles and check if there is a collision
-                first_circle = self._world.object_list[first_object_id].collision_circle
-                second_circle = self._world.object_list[second_object_id].collision_circle
+                world_objects_list = self._world.get_objects_list()
+                first_circle = world_objects_list[first_object_id].collision_circle
+                second_circle = world_objects_list[second_object_id].collision_circle
                 is_collision = first_circle.is_intersecting_circle(second_circle)
 
                 if is_collision:

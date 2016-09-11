@@ -8,7 +8,6 @@ class AsteroidGenerator:
         self._countdown_counter = initial_countdown
         self._max_number_asteroid = max_number_of_asteroid
         self._asteroid_counter = 0
-        self._world = world
 
     def process(self):
         self._countdown_counter -= 1
@@ -20,12 +19,12 @@ class AsteroidGenerator:
             speed = self._generate_speed()
             angle = self._generate_heading()
             self._asteroid_counter += 1
-            return Asteroid(self._world, x, y, angle, speed)
+            return Asteroid(x, y, angle, speed)
         else:
             return None
 
     def _generate_new_starting_position(self):
-        x =  - constants.VIEWPORT_WIDTH / 2
+        x =  - constants.DISPLAY_SURFACE_WIDTH / 2
         y = 0
         return x, y
 

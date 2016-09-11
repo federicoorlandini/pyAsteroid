@@ -1,13 +1,8 @@
-from Main import lookuptables
-
-
 # COLORS
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-
-# Cos and sin lookup table
-LOOKUP_TABLE = lookuptables.CosSinTable()
+RED = (255, 0, 0)
 
 # Screen size
-VIEWPORT_WIDTH = 500
-VIEWPORT_HEIGHT = 500
+DISPLAY_SURFACE_WIDTH = 500
+DISPLAY_SURFACE_HEIGHT = 500

@@ -67,22 +67,21 @@ class GraphicObjectTests(unittest.TestCase):
 class StarShipTests(unittest.TestCase):
     # fake world
     _world = World((100, 100))
-    _lookup_table = lookuptables.CosSinTable()
 
     def test_fire_withReloadCounterNotZero_shouldNotFireABullet(self):
-        ship = StarShip(self._world, 0, 0, constants.WHITE, self._lookup_table)
+        ship = StarShip(self._world, 0, 0, constants.WHITE)
         ship.reload_counter = 1
         bullet = ship.fire()
         self.assertIsNone(bullet)
 
     def test_fire_withReloadCounterZero_shouldFireABullet(self):
-        ship = StarShip(self._world, 0, 0, constants.WHITE, self._lookup_table)
+        ship = StarShip(self._world, 0, 0, constants.WHITE)
         ship.reload_counter = 0
         bullet = ship.fire()
         self.assertIsNotNone(bullet)
 
     def test_fire_withReloadCounterZero_shouldResetTheReloadCounter(self):
-        ship = StarShip(self._world, 0, 0, constants.WHITE, self._lookup_table)
+        ship = StarShip(self._world, 0, 0, constants.WHITE)
         ship.reload_counter = 0
         ship.fire()
         self.assertNotEqual(ship.reload_counter, 0)
