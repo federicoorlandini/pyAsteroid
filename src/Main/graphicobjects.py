@@ -97,7 +97,8 @@ class StarShip(GraphicObject):
 
     def collision_handler(self, collision_info, world):
         # Retrieve the type of the other object that collided
-        other_object = world.object_list[collision_info.second_collider_object_id]
+        objects_list = world.get_objects_list()
+        other_object = objects_list[collision_info.second_collider_object_id]
         if( isinstance(other_object, Bullet) ):
             return
         raise Exception('Not implemented')

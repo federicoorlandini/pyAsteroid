@@ -16,7 +16,7 @@ class GraphicObjectTests(unittest.TestCase):
     def test_move_shouldChangeThePositionOfTheObjectInTheCorrectWay(self):
         # fake world
         world = World((100, 100))
-        obj = GraphicObject(world)
+        obj = GraphicObject()
         movement_angle = 45
         movement_length = 10
 
@@ -44,7 +44,7 @@ class GraphicObjectTests(unittest.TestCase):
         # Prepare the object with vertexes like a square with the center in (0, 0) and
         # width and height 10 pixels
         object_vertexes = (Vector2D(5, 5), Vector2D(5, -5), Vector2D(-5, -5), Vector2D(-5, 5))
-        graph_object = GraphicObject(world, x=0, y=0, vertexes_local=object_vertexes)
+        graph_object = GraphicObject(x=0, y=0, vertexes_local=object_vertexes)
         graph_object._compute_collision_circle()
         # The expected radius is the following
         expected_radius = 5 * math.sqrt(2)
@@ -58,7 +58,7 @@ class GraphicObjectTests(unittest.TestCase):
         # Prepare the object with vertexes like a square with the center in (0, 0) and
         # width and height 10 pixels
         object_vertexes = (Vector2D(5, 5), Vector2D(5, -5), Vector2D(-5, -5), Vector2D(-5, 5))
-        graph_object = GraphicObject(world, x=0, y=0, vertexes_local=object_vertexes)
+        graph_object = GraphicObject(x=0, y=0, vertexes_local=object_vertexes)
         graph_object.process(1)
         self.assertTrue(mock.called)
 
@@ -69,19 +69,19 @@ class StarShipTests(unittest.TestCase):
     _world = World((100, 100))
 
     def test_fire_withReloadCounterNotZero_shouldNotFireABullet(self):
-        ship = StarShip(self._world, 0, 0, constants.WHITE)
+        ship = StarShip(0, 0, constants.WHITE)
         ship.reload_counter = 1
         bullet = ship.fire()
         self.assertIsNone(bullet)
 
     def test_fire_withReloadCounterZero_shouldFireABullet(self):
-        ship = StarShip(self._world, 0, 0, constants.WHITE)
+        ship = StarShip(0, 0, constants.WHITE)
         ship.reload_counter = 0
         bullet = ship.fire()
         self.assertIsNotNone(bullet)
 
     def test_fire_withReloadCounterZero_shouldResetTheReloadCounter(self):
-        ship = StarShip(self._world, 0, 0, constants.WHITE)
+        ship = StarShip(0, 0, constants.WHITE)
         ship.reload_counter = 0
         ship.fire()
         self.assertNotEqual(ship.reload_counter, 0)
