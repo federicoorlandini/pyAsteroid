@@ -1,16 +1,16 @@
 import unittest
 import unittest.mock
 
-from Main.graphicobjects import GraphicObject
-from Main.geometrytransformation2d import Vector2D
-from Main.engines import World, CollisionHandler
+from graphicobjects import GraphicObject
+from geometrytransformation2d import Vector2D
+from engines import World, CollisionHandler
 
 # -----------------------------------------------------------------
 
 
 class CollisionHandlerTest(unittest.TestCase):
     @unittest.mock.patch('pygame.Surface')
-    @unittest.mock.patch('Main.graphicobjects.GraphicObject.collision_handler')
+    @unittest.mock.patch('graphicobjects.GraphicObject.collision_handler')
     def test_handle_with_three_object_that_collide_should_call_the_correct_collision_handler_on_the_objects(self, mock_collision_handler, mock_pygame_surface):
         object_1 = GraphicObject (0, 0, vertexes_local=[Vector2D(10, 10), Vector2D(10, -10), Vector2D(-10, -10), Vector2D(-10, 10)])
         object_2 = GraphicObject (10, 10, vertexes_local=[Vector2D(10, 10), Vector2D(10, -10), Vector2D(-10, -10), Vector2D(-10, 10)])

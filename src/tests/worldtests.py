@@ -1,16 +1,16 @@
 import unittest
 import unittest.mock
-import Main.engines
-from Main.graphicobjects import GraphicObject
-from Main.engines import World
-from Main.geometrytransformation2d import Vector2D
+import engines
+from graphicobjects import GraphicObject
+from engines import World
+from geometrytransformation2d import Vector2D
 
 # -----------------------------------------------------------------
 
 
 class WorldTest(unittest.TestCase):
     def add_object_shouldAddTheObjectToTheList(self):
-        world = Main.engines.World()
+        world = engines.World()
         obj = GraphicObject()
 
         world.add_object(obj)
@@ -35,7 +35,7 @@ class WorldTest(unittest.TestCase):
         is_visible = world._is_object_visible(graph_object)
         self.assertTrue(is_visible, "the object should be visible")
 
-    @unittest.mock.patch('Main.engines.CollisionHandler.handle')
+    @unittest.mock.patch('engines.CollisionHandler.handle')
     @unittest.mock.patch('pygame.Surface')
     def test_process_should_call_detect_collision(self, surface_mock, mock):
         world = World((100, 100))

@@ -1,13 +1,12 @@
 import pygame.locals
 import sys
 import logging
-import Main.constants
-import Main.graphicobjects
-import Main.logic
-import Main.display
-import Main.geometrytransformation2d
-from Main import constants
-from Main.collisions import CollisionHandler
+import constants
+import graphicobjects
+import logic
+import display
+import geometrytransformation2d
+from collisions import CollisionHandler
 
 
 logging.getLogger().setLevel(logging.DEBUG)
@@ -21,15 +20,10 @@ class Engine(object):
         # The world size will be the same of the display size
         self.world = World((display.width, display.height))
         self._display = display
-
-    def handle_key_events(self, event):
-        if event.type == pygame.locals.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
-            # Exit application
-            pygame.quit()
-            sys.exit()
-
+        
     def handle_keyboard(self):
         keys_pressed = pygame.key.get_pressed()
+
         if keys_pressed[pygame.locals.K_a]:
             # Button A --> Rotate
             self.world.starship.rotate_object(-10)
@@ -44,10 +38,14 @@ class Engine(object):
             if new_bullet is not None:
                 self.world.add_object(new_bullet)
 
-        if keys_pressed[pygame.locals.K_q]:
+        if keys_pressed[pygame.locals.K_q] or keys_pressed[pygame.locals.K_ESCAPE]:
             # Exit application
             pygame.quit()
-            sys.exit()
+            sys.exit(0)
+
+    ''' Fill the display surface with black '''
+    def clean(self):
+        self._display.draw_surface.fill(constants.BLACK)
 
     ''' Draw the entire world '''
     def draw(self):
@@ -62,9 +60,9 @@ class Engine(object):
         self.world.process(time_passed)
 
     ''' Return the number of objects in the world '''
-    def show_number_of_objects_in_worlds(self, display_surface, font):
+    def show_number_of_objects_in_worlds(self, font):
         label_surface = font.render("Objects: %s" % len(self.world._objects_list), 1, (255, 255, 255))
-        display_surface.blit(label_surface, (0, 0))
+        self._display.draw_surface.blit(label_surface, (0, 0))
 
 # -----------------------------------------------------------------
 
@@ -89,9 +87,9 @@ class World:
         self._objects_list = {}
         self._objects_counter = 0
         # Add the objects in the world
-        self.starship = Main.graphicobjects.StarShip(0, 0, Main.constants.WHITE)
+        self.starship = graphicobjects.StarShip(0, 0, constants.WHITE)
         self.add_object(self.starship)
-        self.asteroid_generator = Main.logic.AsteroidGenerator(self, 30, 1)
+        self.asteroid_generator = logic.AsteroidGenerator(self, 30, 1)
         self.collision_handler = CollisionHandler(self)
 
     ''' Add an object to the world '''
@@ -144,7 +142,7 @@ class World:
         # of each vertex of the object
         object_vertexes = world_object.get_vertexes()
         # First, rotation of each vertex
-        world_vertexes = [Main.geometrytransformation2d.from_local_to_world_coordinates(vertex, world_object.position, world_object.rotation_angle)
+        world_vertexes = [geometrytransformation2d.from_local_to_world_coordinates(vertex, world_object.position, world_object.rotation_angle)
                           for vertex
                           in object_vertexes]
         return world_vertexes
@@ -164,7 +162,7 @@ class World:
         for vertex in world_vertexes:
             if vertex.x < self._x_max and vertex.x > self._x_min and vertex.y > self._y_min and vertex.y < self._x_max:
                 return True
-        # If the code arrive here, it means that there is at least one vertex that is visible
+        # If the code arrive here, it means that all the vertex are outside the visible area, so the object is not visible
         return False
 # -----------------------------------------------------------------
 
@@ -177,10 +175,10 @@ def main():
     DEFAULT_FONT = pygame.font.SysFont("arial", 15)
 
     # Prepare the drawing surface
-    DISPLAY_SURFACE = pygame.display.set_mode((constants.DISPLAY_SURFACE_WIDTH, constants.DISPLAY_SURFACE_HEIGHT))
+    draw_surface = pygame.display.set_mode((constants.DISPLAY_SURFACE_WIDTH, constants.DISPLAY_SURFACE_HEIGHT))
 
     # Prepare the display area
-    DISPLAY = Main.display.Display(constants.DISPLAY_SURFACE_WIDTH, constants.DISPLAY_SURFACE_HEIGHT, DISPLAY_SURFACE)
+    DISPLAY = display.Display(constants.DISPLAY_SURFACE_WIDTH, constants.DISPLAY_SURFACE_HEIGHT, draw_surface)
 
     ENGINE = Engine(DISPLAY)
 
@@ -194,8 +192,7 @@ def main():
     # Engine loop
     while True:
         # handle events
-        for event in pygame.event.get():
-            ENGINE.handle_key_events(event)
+        pygame.event.get()
 
         # Handle keyboard
         ENGINE.handle_keyboard()
@@ -205,9 +202,9 @@ def main():
         ENGINE.update_world(delta_time / 1000)
 
         # Draw the scene
-        DISPLAY_SURFACE.fill(Main.constants.BLACK)
+        ENGINE.clean()
         ENGINE.draw()
-        ENGINE.show_number_of_objects_in_worlds(DISPLAY_SURFACE, DEFAULT_FONT)
+        ENGINE.show_number_of_objects_in_worlds(DEFAULT_FONT)
 
         pygame.display.update()
 

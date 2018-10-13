@@ -1,13 +1,13 @@
-import Main.constants
+import constants
 import math
-import Main.geometrytransformation2d
-from Main.geometrytransformation2d import Vector2D, Circle
+import geometrytransformation2d
+from geometrytransformation2d import Vector2D, Circle
 
 # -----------------------------------------------------------------
 class GraphicObject(object):
     """ GraphicObject: the base class for every object on the screen """
 
-    def __init__(self, x=0, y=0, color=Main.constants.WHITE,
+    def __init__(self, x=0, y=0, color=constants.WHITE,
                  vertexes_local=None):
         self.position = Vector2D(x, y)
         self.color = color
@@ -21,7 +21,7 @@ class GraphicObject(object):
     """ This method move the Graphical object """
 
     def _move(self, angle, length):
-        self.position = Main.geometrytransformation2d.move_in_a_direction(self.position, angle, length)
+        self.position = geometrytransformation2d.move_in_a_direction(self.position, angle, length)
 
     """ This method compute the circle for the collision detection """
 
@@ -82,8 +82,8 @@ class StarShip(GraphicObject):
 
     def fire(self):
         if not self.is_reloading():
-            null_vector = Main.geometrytransformation2d.Vector2D()
-            start_position = Main.geometrytransformation2d.from_local_to_world_coordinates(self.object_vertexes[0], null_vector, self.head_angle)
+            null_vector = geometrytransformation2d.Vector2D()
+            start_position = geometrytransformation2d.from_local_to_world_coordinates(self.object_vertexes[0], null_vector, self.head_angle)
             bullet = Bullet(start_position.x, start_position.y, self.head_angle)
             self._reset_reload_counter()
             return bullet
@@ -139,4 +139,4 @@ class Asteroid(GraphicObject):
         self.speed = speed
 
     def collision_handler(self, collision_info, world):
-        self.color = Main.constants.RED
+        self.color = constants.RED

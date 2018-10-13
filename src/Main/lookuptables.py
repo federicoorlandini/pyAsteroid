@@ -1,5 +1,5 @@
 import math
-import Main.angles
+import angles
 
 cos = {}
 sin = {}
@@ -9,7 +9,7 @@ def _initializeLookupTables():
     # to have an easier rotation algorithm
     for i in range(-359, 359):
         #  Convert in radiant
-        angle_radiant = Main.angles.from_degree_to_radiant(i)
+        angle_radiant = angles.from_degree_to_radiant(i)
         cos[i] = math.cos(angle_radiant)
         sin[i] = math.sin(angle_radiant)
 
@@ -30,7 +30,7 @@ class CosSinTable(object):
         # to have an easier rotation algorithm
         for i in range(-359, 359):
             #  Convert in radiant
-            angle_radiant = Main.angles.from_degree_to_radiant(i)
+            angle_radiant = angles.from_degree_to_radiant(i)
             cos[i] = math.cos(angle_radiant)
             sin[i] = math.sin(angle_radiant)
         self.cos = cos

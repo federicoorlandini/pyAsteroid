@@ -1,5 +1,5 @@
 import unittest
-from Main import values
+import values
 
 
 class ValuesTests(unittest.TestCase):

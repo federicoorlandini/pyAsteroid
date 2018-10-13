@@ -1,5 +1,5 @@
-from Main import constants
-from Main.graphicobjects import Asteroid
+import constants
+from graphicobjects import Asteroid
 
 
 class AsteroidGenerator:

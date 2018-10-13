@@ -1,8 +1,8 @@
 import unittest
-from Main import geometrytransformation2d
-from Main.geometrytransformation2d import Vector2D
+import geometrytransformation2d
+from geometrytransformation2d import Vector2D
 from math import sqrt
-from Main import values
+import values
 
 
 class Vector2DTests(unittest.TestCase):

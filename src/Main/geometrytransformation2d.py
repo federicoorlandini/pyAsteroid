@@ -1,6 +1,5 @@
-import Main
-import Main.values
-from Main import lookuptables
+import lookuptables
+import values
 
 class Vector2D(object):
     """ Thi class define a simple vector in the 2D world
@@ -40,7 +39,7 @@ class Circle(object):
     def is_intersecting_circle(self, other_circle):
         centers_distance_power_2 = (self.center - other_circle.center).magnitude_power_2()
         threshold = (self.radius + other_circle.radius) ** 2
-        return (centers_distance_power_2 <= threshold) or Main.values.are_equals(centers_distance_power_2, threshold)
+        return (centers_distance_power_2 <= threshold) or values.are_equals(centers_distance_power_2, threshold)
 
 # -----------------------------------------------------------------------
 def rotate(vertex, angle):

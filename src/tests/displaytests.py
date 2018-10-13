@@ -1,8 +1,8 @@
 import unittest.mock
-from Main.geometrytransformation2d import Vector2D
-import Main.constants
-from Main.graphicobjects import GraphicObject
-from Main.engines import World
+from geometrytransformation2d import Vector2D
+import constants
+from graphicobjects import GraphicObject
+from engines import World
 
 
 class DisplayTests(unittest.TestCase):
@@ -11,7 +11,7 @@ class DisplayTests(unittest.TestCase):
         viewport_center = Vector2D(0,0)
         width = 600
         height = 400
-        display = Main.display.Display(width=width, height=height)
+        display = display.Display(width=width, height=height)
         screen_coordinates = display._to_display_coordinate(viewport_center)
 
         # Should be mapped in the central point of the screen
@@ -23,11 +23,11 @@ class DisplayTests(unittest.TestCase):
         # Let's prepare the viewport to test
         width = 600
         height = 400
-        display = Main.display.Display(width, height, draw_surface)
+        display = display.Display(width, height, draw_surface)
 
         # The vertex list (only one)
         vertexes_list = (Vector2D(0, 0),)
-        color = Main.constants.WHITE
+        color = constants.WHITE
         display.draw_world_vertexes(vertexes_list, color)
         # Check the sequence passed to the draw_surface.line() call
         expected_sequence = ((300, 200),)
