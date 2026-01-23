@@ -56,7 +56,7 @@ class GraphicObject(object):
     def get_color(self):
         return self.color
 
-    def collision_handler(self, collision_info):
+def collision_handler(self, collision_info, world=None):
         pass
 
 # -----------------------------------------------------------------
@@ -82,7 +82,7 @@ class StarShip(GraphicObject):
 
     def fire(self):
         if not self.is_reloading():
-            null_vector = geometrytransformation2d.Vector2D()
+            null_vector = geometrytransformation2d.Vector2D(0, 0)
             start_position = geometrytransformation2d.from_local_to_world_coordinates(self.object_vertexes[0], null_vector, self.head_angle)
             bullet = Bullet(start_position.x, start_position.y, self.head_angle)
             self._reset_reload_counter()
@@ -99,9 +99,16 @@ class StarShip(GraphicObject):
         # Retrieve the type of the other object that collided
         objects_list = world.get_objects_list()
         other_object = objects_list[collision_info.second_collider_object_id]
-        if( isinstance(other_object, Bullet) ):
-            return
-        raise Exception('Not implemented')
+        if isinstance(other_object, Bullet):
+            return  # Don't collide with own bullets
+        
+        # Handle asteroid collision - for now, just change color to indicate hit
+        if isinstance(other_object, Asteroid):
+            self.color = constants.RED
+            # TODO: Add proper game over logic, lives system, etc.
+        
+        # Remove the "Not implemented" exception
+        # raise Exception('Not implemented')  # COMMENTED OUT
 
     def _update_reload_counter(self):
         if self.is_reloading():
