@@ -158,6 +158,10 @@ settings.local.py
 secrets.json
 .secrets
 
+# Local overrides for game configuration
+game_config.local.yaml
+config/local/
+
 # Game-specific
 *.sav
 *.save

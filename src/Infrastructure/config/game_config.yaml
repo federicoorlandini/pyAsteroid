@@ -1,0 +1,59 @@
+# Game Configuration for pyAsteroid
+# This file contains all configurable game parameters
+
+display:
+  # Display settings
+  width: 500
+  height: 500
+  fps: 30
+
+game:
+  starship:
+    # Starship settings
+    reload_counter: 10
+    color: [255, 255, 255]  # White in RGB
+    rotation_speed: 10       # Degrees per key press
+    vertexes:
+      - [20, 0]      # Front vertex
+      - [-10, -10]   # Top-left vertex  
+      - [0, 0]       # Center vertex
+      - [-10, 10]    # Bottom-left vertex
+  
+  bullet:
+    # Bullet settings
+    speed: 150       # Pixels per second
+    color: [255, 255, 255]  # White in RGB
+    vertexes:
+      - [-3, 0]       # Left vertex
+      - [3, 0]        # Right vertex
+  
+  asteroid:
+    # Asteroid settings
+    speed: 10        # Pixels per second
+    max_count: 1     # Maximum number of asteroids
+    spawn_countdown: 30  # Frames between spawn attempts
+    color: [255, 255, 255]  # White in RGB
+    vertexes:
+      - [10, 10]      # Top-right vertex
+      - [-10, 10]     # Top-left vertex
+      - [-10, -10]    # Bottom-left vertex
+      - [10, -10]     # Bottom-right vertex
+
+physics:
+  # Physics and collision settings
+  collision_threshold: 0.0001  # Minimum difference to consider values different
+  world_bounds:
+    # Objects are removed when completely outside visible area
+    margin: 50  # Extra margin beyond screen edges
+
+input:
+  # Input handling settings
+  key_repeat_delay: 10   # Milliseconds before key repeat starts
+  key_repeat_interval: 10  # Milliseconds between key repeats
+  
+controls:
+  # Key bindings
+  rotate_left: "a"       # Rotate ship counter-clockwise
+  rotate_right: "d"      # Rotate ship clockwise
+  fire: "space"          # Fire bullet
+  exit: ["q", "escape"]  # Exit game

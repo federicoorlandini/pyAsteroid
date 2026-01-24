@@ -66,13 +66,17 @@ class StarShip(GraphicObject):
     """ Class STAR SHIP """
     RELOAD_COUNTER_DEFAULT_VALUE = 10
 
-    def __init__(self, x, y, color):
-        object_vertexes = (Vector2D(20, 0),
-                           Vector2D(-10, -10),
-                           Vector2D(0, 0),
-                           Vector2D(-10, 10))
+    def __init__(self, x, y, color, vertexes_local=None):
+        # Allow custom vertexes or use defaults for backward compatibility
+        if vertexes_local is None:
+            object_vertexes = (Vector2D(20, 0),
+                               Vector2D(-10, -10),
+                               Vector2D(0, 0),
+                               Vector2D(-10, 10))
+        else:
+            object_vertexes = vertexes_local
+            
         super().__init__(x, y, color, vertexes_local=object_vertexes)
-
         self.reload_counter = self.RELOAD_COUNTER_DEFAULT_VALUE
 
     " This method rotate the StarShip around its position point "
@@ -124,9 +128,14 @@ class StarShip(GraphicObject):
 class Bullet(GraphicObject):
     """ This is a single bullet that is fired from the Star ship """
 
-    def __init__(self, x, y, angle_of_direction, speed=150):
-        object_vertexes = (Vector2D(-3, 0), Vector2D(3, 0))
-        super().__init__(x, y ,vertexes_local=object_vertexes)
+    def __init__(self, x, y, angle_of_direction, speed=150, vertexes_local=None):
+        # Allow custom vertexes or use defaults for backward compatibility
+        if vertexes_local is None:
+            object_vertexes = (Vector2D(-3, 0), Vector2D(3, 0))
+        else:
+            object_vertexes = vertexes_local
+            
+        super().__init__(x, y, vertexes_local=object_vertexes)
         self.head_angle = angle_of_direction
         self.speed = speed
 
@@ -139,8 +148,13 @@ class Bullet(GraphicObject):
 # -----------------------------------------------------------------
 
 class Asteroid(GraphicObject):
-    def __init__(self, x, y, angle_of_direction, speed):
-        object_vertexes = (Vector2D(10, 10), Vector2D(-10, 10), Vector2D(-10, -10), Vector2D(10, -10))  # A rectangle
+    def __init__(self, x, y, angle_of_direction, speed, vertexes_local=None):
+        # Allow custom vertexes or use defaults for backward compatibility
+        if vertexes_local is None:
+            object_vertexes = (Vector2D(10, 10), Vector2D(-10, 10), Vector2D(-10, -10), Vector2D(10, -10))  # A rectangle
+        else:
+            object_vertexes = vertexes_local
+            
         super().__init__(x, y, vertexes_local=object_vertexes)
         self.head_angle = angle_of_direction
         self.speed = speed
