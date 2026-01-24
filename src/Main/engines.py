@@ -16,30 +16,16 @@ logging.getLogger().setLevel(logging.DEBUG)
 
 
 class Engine(object):
-    def __init__(self, display):
+    def __init__(self, display, world, input_handler):
         # The world size will be the same of the display size
-        self.world = World((display.width, display.height))
+        self.world = world
         self._display = display
+        self._input_handler = input_handler
         
     def handle_keyboard(self):
-        keys_pressed = pygame.key.get_pressed()
-
-        if keys_pressed[pygame.locals.K_a]:
-            # Button A --> Rotate
-            self.world.starship.rotate_object(-10)
-
-        if keys_pressed[pygame.locals.K_d]:
-            # Button D --> Rotate
-            self.world.starship.rotate_object(10)
-
-        if keys_pressed[pygame.locals.K_SPACE]:
-            # Space bar --> Fire
-            new_bullet = self.world.starship.fire()
-            if new_bullet is not None:
-                self.world.add_object(new_bullet)
-
-        if keys_pressed[pygame.locals.K_q] or keys_pressed[pygame.locals.K_ESCAPE]:
-            # Exit application
+        """Delegate to injected input handler"""
+        self._input_handler.handle_input()
+        if self._input_handler.is_exit_requested():
             pygame.quit()
             sys.exit(0)
 
@@ -63,6 +49,78 @@ class Engine(object):
     def show_number_of_objects_in_worlds(self, font):
         label_surface = font.render("Objects: %s" % len(self.world._objects_list), 1, (255, 255, 255))
         self._display.draw_surface.blit(label_surface, (0, 0))
+    
+    def start_game(self):
+        """Start the main game loop using DI-provided configuration"""
+        import pygame
+        
+        pygame.init()
+        
+        # Initialize configuration and factories manually
+        import sys
+        import os
+        # Add src to path for imports
+        script_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        src_dir = os.path.join(script_dir, 'src')
+        if src_dir not in sys.path:
+            sys.path.insert(0, src_dir)
+        
+        from Infrastructure.config.config_manager import ConfigurationManager
+        from Infrastructure.factories.system_factory import SystemFactory
+        from Infrastructure.factories.game_object_factory import GameObjectFactory
+        from Main.input_handler import KeyboardInputHandler
+        
+        config = ConfigurationManager()
+        system_factory = SystemFactory()
+        game_object_factory = GameObjectFactory()
+        
+        # Create display using factory and configuration
+        width = config.get_int('display.width', 500)
+        height = config.get_int('display.height', 500)
+        draw_surface = pygame.display.set_mode((width, height))
+        
+        # Create a simple display object
+        import display
+        display_obj = display.Display(width, height, draw_surface)
+        
+        # Update engine with DI-provided dependencies
+        self._display = display_obj
+        
+        # Update world with factory dependencies
+        self.world.starship = game_object_factory.create_starship_at_origin()
+        self.world.asteroid_generator = system_factory.create_asteroid_generator(self.world)
+        self.world.collision_handler = system_factory.create_collision_handler(self.world)
+        
+        # Update input handler
+        self._input_handler = KeyboardInputHandler(self.world)
+        
+        # Get FPS and keyboard settings
+        fps = system_factory.get_fps()
+        key_delay, key_interval = system_factory.get_key_repeat_settings()
+        pygame.key.set_repeat(key_delay, key_interval)
+        
+        # Game setup
+        DEFAULT_FONT = pygame.font.SysFont("arial", 15)
+        FPS_CLOCK = pygame.time.Clock()
+        
+        # Engine loop
+        while True:
+            # handle events
+            pygame.event.get()
+
+            # Handle keyboard
+            self.handle_keyboard()
+
+            delta_time = FPS_CLOCK.tick(fps)
+
+            self.update_world(delta_time / 1000)
+
+            # Draw the scene
+            self.clean()
+            self.draw()
+            self.show_number_of_objects_in_worlds(DEFAULT_FONT)
+
+            pygame.display.update()
 
 # -----------------------------------------------------------------
 
@@ -74,7 +132,7 @@ class World:
             self.vertexes = vertexes
             self.color = color
 
-    def __init__(self, world_size):
+    def __init__(self, world_size, game_object_factory, system_factory):
         # World width and height
         self._world_width = world_size[0]
         self._world_height = world_size[1]
@@ -86,11 +144,11 @@ class World:
         # Objects list
         self._objects_list = {}
         self._objects_counter = 0
-        # Add the objects in the world
-        self.starship = graphicobjects.StarShip(0, 0, constants.WHITE)
+        # Add the objects in the world using factories
+        self.starship = game_object_factory.create_starship_at_origin()
         self.add_object(self.starship)
-        self.asteroid_generator = logic.AsteroidGenerator(self, 30, 1)
-        self.collision_handler = CollisionHandler(self)
+        self.asteroid_generator = system_factory.create_asteroid_generator(self)
+        self.collision_handler = system_factory.create_collision_handler(self)
 
     ''' Add an object to the world '''
     def add_object(self, graphical_object):

@@ -291,6 +291,16 @@ class ISystemFactory(ABC):
     def create_display(self, width: int, height: int, draw_surface) -> IDisplay:
         """Create a display system for rendering."""
         pass
+    
+    @abstractmethod
+    def get_fps(self) -> int:
+        """Get the configured FPS for the game."""
+        pass
+    
+    @abstractmethod
+    def get_key_repeat_settings(self) -> tuple:
+        """Get keyboard repeat delay and interval settings."""
+        pass
 
 
 class IInputHandler(ABC):
