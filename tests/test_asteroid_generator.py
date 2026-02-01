@@ -16,40 +16,25 @@ class AsteroidGeneratorTests(unittest.TestCase):
     """Tests for AsteroidGenerator class."""
     
     def test_process_should_decrease_countdown_counter(self):
-        """process() should decrease the countdown counter.
-        
-        NOTE: There's a bug in logic.py line 14 - it uses min() instead of max(),
-        causing the counter to jump to 0 immediately. This test documents the 
-        actual (buggy) behavior. The correct behavior would be:
-            self.assertEqual(generator._countdown_counter, initial_counter - 1)
-        """
+        """process() should decrease the countdown counter."""
         initial_counter = 10
         world = MockWorld()
         generator = AsteroidGenerator(world, initial_counter, max_number_of_asteroid=10)
         
         generator.process()
         
-        # BUG: Due to min() instead of max() on line 14, counter goes to 0 immediately
-        # Expected (correct): self.assertEqual(generator._countdown_counter, 9)
-        self.assertEqual(generator._countdown_counter, 0)  # Actual buggy behavior
+        self.assertEqual(generator._countdown_counter, initial_counter - 1)
 
     def test_process_should_not_decrease_counter_below_zero(self):
-        """process() should not decrease counter below zero.
-        
-        NOTE: There's a bug in logic.py line 14 - it uses min() instead of max(),
-        which allows the counter to go negative. This test documents the actual 
-        (buggy) behavior.
-        """
+        """process() should not decrease counter below zero."""
         initial_counter = 1
         world = MockWorld()
         generator = AsteroidGenerator(world, initial_counter, max_number_of_asteroid=10)
         
-        generator.process()  # Counter becomes 0 (then min(0, 0) = 0)
-        generator.process()  # Counter becomes -1 (then min(-1, 0) = -1)
+        generator.process()  # Counter becomes 0
+        generator.process()  # Counter should stay at 0
         
-        # BUG: Due to min() instead of max(), counter goes negative
-        # Expected (correct): self.assertEqual(generator._countdown_counter, 0)
-        self.assertEqual(generator._countdown_counter, -1)  # Actual buggy behavior
+        self.assertEqual(generator._countdown_counter, 0)
 
     def test_get_new_asteroid_returns_asteroid_when_countdown_expired(self):
         """get_new_asteroid() should return an asteroid when countdown is 0."""

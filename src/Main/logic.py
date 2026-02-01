@@ -11,7 +11,7 @@ class AsteroidGenerator:
 
     def process(self):
         self._countdown_counter -= 1
-        self._countdown_counter = min(self._countdown_counter, 0)
+        self._countdown_counter = max(self._countdown_counter, 0)
 
     def get_new_asteroid(self):
         if self._countdown_counter <= 0 and self._asteroid_counter < self._max_number_asteroid:
