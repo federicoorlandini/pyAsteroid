@@ -235,5 +235,114 @@ class AsteroidTests(unittest.TestCase):
         self.assertEqual(asteroid.color, constants.RED)
 
 
+# --- Additional Tests for Better Coverage ---
+
+class GraphicObjectEdgeCaseTests(unittest.TestCase):
+    """Additional edge case tests for GraphicObject."""
+    
+    def test_compute_collision_circle_with_none_vertexes(self):
+        """_compute_collision_circle() should handle None vertexes."""
+        obj = GraphicObject(x=0, y=0, vertexes_local=None)
+        # Should not raise an exception
+        result = obj._compute_collision_circle()
+        self.assertIsNone(result)
+    
+    def test_rotate_object_should_wrap_around_360(self):
+        """rotate_object() should wrap angle at 360 degrees."""
+        obj = GraphicObject()
+        obj.rotation_angle = 350
+        
+        obj.rotate_object(20)
+        
+        self.assertEqual(obj.rotation_angle, 10)
+    
+    def test_get_vertexes_with_none_returns_empty_list(self):
+        """get_vertexes() should return empty list when vertexes are None."""
+        obj = GraphicObject(vertexes_local=None)
+        
+        result = obj.get_vertexes()
+        
+        self.assertEqual(result, [])
+    
+    def test_id_property_getter_and_setter(self):
+        """id property should be gettable and settable."""
+        obj = GraphicObject()
+        
+        obj.id = 42
+        
+        self.assertEqual(obj.id, 42)
+
+
+class StarShipCollisionTests(unittest.TestCase):
+    """Tests for StarShip collision handling."""
+    
+    def test_collision_with_asteroid_changes_color_to_red(self):
+        """StarShip collision with asteroid should change color to red."""
+        ship = StarShip(0, 0, constants.WHITE)
+        asteroid = Asteroid(5, 5, angle_of_direction=0, speed=10)
+        
+        mock_world = MockWorld()
+        mock_world.add_object(ship)
+        mock_world.add_object(asteroid)
+        
+        # Create collision info indicating collision with asteroid
+        class MockCollisionInfo:
+            first_collider_object_id = 1
+            second_collider_object_id = 2
+        
+        ship.collision_handler(MockCollisionInfo(), mock_world)
+        
+        self.assertEqual(ship.color, constants.RED)
+    
+    def test_collision_with_own_bullet_is_ignored(self):
+        """StarShip collision with bullet should be ignored."""
+        ship = StarShip(0, 0, constants.WHITE)
+        bullet = Bullet(5, 5, angle_of_direction=0)
+        
+        mock_world = MockWorld()
+        mock_world.add_object(ship)
+        mock_world.add_object(bullet)
+        
+        original_color = ship.color
+        
+        # Create collision info indicating collision with bullet
+        class MockCollisionInfo:
+            first_collider_object_id = 1
+            second_collider_object_id = 2
+        
+        ship.collision_handler(MockCollisionInfo(), mock_world)
+        
+        # Color should remain unchanged
+        self.assertEqual(ship.color, original_color)
+
+
+class BulletCollisionTests(unittest.TestCase):
+    """Tests for Bullet collision handling."""
+    
+    def test_collision_with_asteroid_removes_asteroid(self):
+        """Bullet collision with asteroid should remove the asteroid."""
+        bullet = Bullet(0, 0, angle_of_direction=0)
+        asteroid = Asteroid(5, 5, angle_of_direction=0, speed=10)
+        
+        mock_world = MockWorld()
+        mock_world.add_object(bullet)
+        mock_world.add_object(asteroid)
+        
+        asteroid_id = asteroid.id
+        
+        # Verify asteroid is in world
+        self.assertIn(asteroid_id, mock_world.get_objects_list())
+        
+        # Create collision info indicating collision with asteroid
+        class MockCollisionInfo:
+            first_collider_object_id = 1
+            second_collider_object_id = 2
+        
+        bullet.collision_handler(MockCollisionInfo(), mock_world)
+        
+        # Asteroid should be removed from world
+        self.assertNotIn(asteroid_id, mock_world.get_objects_list())
+
+
 if __name__ == "__main__":
     unittest.main()
