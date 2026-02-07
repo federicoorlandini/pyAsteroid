@@ -124,7 +124,6 @@ class GameTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """Set up class-level fixtures."""
-        # Import here to ensure pygame mock is in place
         pass
     
     def setUp(self):
@@ -135,6 +134,10 @@ class GameTestCase(unittest.TestCase):
         """Clean up after tests."""
         pass
 
+
+# =============================================================================
+# MOCK CLASSES - Shared across all test files
+# =============================================================================
 
 class MockWorld:
     """
@@ -149,6 +152,7 @@ class MockWorld:
         self._world_height = height
         self._objects_list = {}
         self._objects_counter = 0
+        self.starship = None
         
     def add_object(self, obj):
         """Add an object to the mock world."""
@@ -168,7 +172,10 @@ class MockWorld:
 
 class MockConfiguration:
     """
-    A mock configuration for testing factories.
+    A mock configuration for testing.
+    
+    Supports all IConfiguration methods with safe type conversion
+    and default value fallbacks.
     """
     
     def __init__(self, config_dict=None):
@@ -178,17 +185,80 @@ class MockConfiguration:
         return self._config.get(key, default)
     
     def get_int(self, key, default=0):
-        return int(self._config.get(key, default))
+        value = self._config.get(key, default)
+        try:
+            return int(value)
+        except (ValueError, TypeError):
+            return default
     
     def get_float(self, key, default=0.0):
-        return float(self._config.get(key, default))
+        value = self._config.get(key, default)
+        try:
+            return float(value)
+        except (ValueError, TypeError):
+            return default
     
     def get_color(self, key, default=(255, 255, 255)):
         return self._config.get(key, default)
     
     def get_vertexes(self, key, default=None):
         return self._config.get(key, default)
+    
+    def has(self, key):
+        return self._config.get(key) is not None
 
+
+class MockGameObjectFactory:
+    """
+    Mock factory for creating game objects in tests.
+    
+    Returns simple GraphicObjects that satisfy the factory interface
+    without requiring configuration or physics dependencies.
+    """
+    
+    def create_starship_at_origin(self):
+        from graphicobjects import GraphicObject
+        from geometrytransformation2d import Vector2D
+        return GraphicObject(
+            x=0, y=0,
+            vertexes_local=[Vector2D(10, 0), Vector2D(-5, -5), Vector2D(-5, 5)]
+        )
+    
+    def create_starship(self, x, y):
+        from graphicobjects import GraphicObject
+        from geometrytransformation2d import Vector2D
+        return GraphicObject(
+            x=x, y=y,
+            vertexes_local=[Vector2D(10, 0), Vector2D(-5, -5), Vector2D(-5, 5)]
+        )
+
+
+class MockSystemFactory:
+    """
+    Mock factory for creating system components in tests.
+    
+    Returns MagicMock instances for asteroid generator and collision handler,
+    allowing tests to verify interactions without real implementations.
+    """
+    
+    def __init__(self):
+        self._asteroid_generator = unittest.mock.MagicMock()
+        self._asteroid_generator.process = unittest.mock.MagicMock()
+        self._asteroid_generator.get_new_asteroid = unittest.mock.MagicMock(return_value=None)
+        
+        self._collision_handler = unittest.mock.MagicMock()
+        self._collision_handler.handle = unittest.mock.MagicMock()
+    
+    def create_asteroid_generator(self, world):
+        return self._asteroid_generator
+    
+    def create_collision_handler(self, world):
+        return self._collision_handler
+
+
+# =============================================================================
+# FACTORY FUNCTIONS - Convenience functions for creating test objects
+# =============================================================================
 
 def create_mock_world(width=100, height=100):
     """

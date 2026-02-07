@@ -71,7 +71,7 @@ class SystemFactory(ISystemFactory):
         Returns:
             Configured Display instance
         """
-        from src.Main.display import Display
+        from Main.display import Display
         return Display(width, height, draw_surface)
     
     def get_world_bounds(self) -> tuple:

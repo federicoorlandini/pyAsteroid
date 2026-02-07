@@ -8,6 +8,7 @@ import display
 import geometrytransformation2d
 from collisions import CollisionHandler
 
+__all__ = ['Engine', 'World']
 
 logging.getLogger().setLevel(logging.DEBUG)
 
@@ -51,15 +52,21 @@ class Engine(object):
         self._display.draw_surface.blit(label_surface, (0, 0))
     
     def start_game(self):
-        """Start the main game loop using DI-provided configuration"""
+        """Start the main game loop using DI-provided configuration.
+        
+        This method initializes all game subsystems using the DI container
+        and enters the main game loop. It requires pygame to be available.
+        
+        Raises:
+            ValueError: If required factories cannot be created.
+            ImportError: If required modules are not available.
+        """
         import pygame
         
         pygame.init()
         
-        # Initialize configuration and factories manually
-        import sys
-        import os
         # Add src to path for imports
+        import os
         script_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         src_dir = os.path.join(script_dir, 'src')
         if src_dir not in sys.path:
@@ -68,19 +75,29 @@ class Engine(object):
         from Infrastructure.config.config_manager import ConfigurationManager
         from Infrastructure.factories.system_factory import SystemFactory
         from Infrastructure.factories.game_object_factory import GameObjectFactory
+        from Infrastructure.factories.physics_factory import PhysicsFactory
         from Main.input_handler import KeyboardInputHandler
         
+        # Initialize configuration and factories
         config = ConfigurationManager()
-        system_factory = SystemFactory()
-        game_object_factory = GameObjectFactory()
+        
+        system_factory = SystemFactory(config)
+        if system_factory is None:
+            raise ValueError("Failed to create SystemFactory. Check configuration.")
+        
+        physics_factory = PhysicsFactory(config)
+        if physics_factory is None:
+            raise ValueError("Failed to create PhysicsFactory. Check configuration.")
+        
+        game_object_factory = GameObjectFactory(config, physics_factory)
+        if game_object_factory is None:
+            raise ValueError("Failed to create GameObjectFactory. Check configuration.")
         
         # Create display using factory and configuration
         width = config.get_int('display.width', 500)
         height = config.get_int('display.height', 500)
         draw_surface = pygame.display.set_mode((width, height))
         
-        # Create a simple display object
-        import display
         display_obj = display.Display(width, height, draw_surface)
         
         # Update engine with DI-provided dependencies
@@ -94,7 +111,7 @@ class Engine(object):
         # Update input handler
         self._input_handler = KeyboardInputHandler(self.world)
         
-        # Get FPS and keyboard settings
+        # Get FPS and keyboard settings from configuration
         fps = system_factory.get_fps()
         key_delay, key_interval = system_factory.get_key_repeat_settings()
         pygame.key.set_repeat(key_delay, key_interval)
@@ -226,26 +243,55 @@ class World:
 
 
 def main():
-    # Main game loop
+    """Legacy entry point for the game.
+    
+    Uses the DI-based start_game() method on Engine for proper
+    factory initialization and configuration loading.
+    """
+    import os
+
+    # Add src to path for imports
+    script_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    src_dir = os.path.join(script_dir, 'src')
+    if src_dir not in sys.path:
+        sys.path.insert(0, src_dir)
+
+    from Infrastructure.config.config_manager import ConfigurationManager
+    from Infrastructure.factories.system_factory import SystemFactory
+    from Infrastructure.factories.game_object_factory import GameObjectFactory
+    from Infrastructure.factories.physics_factory import PhysicsFactory
+    from Main.input_handler import KeyboardInputHandler
+
+    # Initialize configuration and factories
+    config = ConfigurationManager()
+    system_factory = SystemFactory(config)
+    physics_factory = PhysicsFactory(config)
+    game_object_factory = GameObjectFactory(config, physics_factory)
+
+    # Create the world
+    width = config.get_int('display.width', constants.DISPLAY_SURFACE_WIDTH)
+    height = config.get_int('display.height', constants.DISPLAY_SURFACE_HEIGHT)
+    world = World((width, height), game_object_factory, system_factory)
+
+    # Create display
     pygame.init()
+    draw_surface = pygame.display.set_mode((width, height))
+    DISPLAY = display.Display(width, height, draw_surface)
 
-    # The default font
-    DEFAULT_FONT = pygame.font.SysFont("arial", 15)
+    # Create input handler
+    input_handler = KeyboardInputHandler(world)
 
-    # Prepare the drawing surface
-    draw_surface = pygame.display.set_mode((constants.DISPLAY_SURFACE_WIDTH, constants.DISPLAY_SURFACE_HEIGHT))
-
-    # Prepare the display area
-    DISPLAY = display.Display(constants.DISPLAY_SURFACE_WIDTH, constants.DISPLAY_SURFACE_HEIGHT, draw_surface)
-
-    ENGINE = Engine(DISPLAY)
+    # Create engine with all dependencies
+    ENGINE = Engine(DISPLAY, world, input_handler)
 
     # Keyboard repeating time
-    pygame.key.set_repeat(10, 10)
+    key_delay, key_interval = system_factory.get_key_repeat_settings()
+    pygame.key.set_repeat(key_delay, key_interval)
 
     # Update speed
-    FPS = 30
+    FPS = system_factory.get_fps()
     FPS_CLOCK = pygame.time.Clock()
+    DEFAULT_FONT = pygame.font.SysFont("arial", 15)
 
     # Engine loop
     while True:

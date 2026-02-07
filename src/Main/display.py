@@ -1,6 +1,8 @@
 from geometrytransformation2d import Vector2D
 import pygame
 
+__all__ = ['Display']
+
 
 # -----------------------------------------------------------------------
 class Display(object):

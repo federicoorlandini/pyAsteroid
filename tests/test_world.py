@@ -7,39 +7,10 @@ import unittest.mock
 
 # Import test configuration (sets up paths and mocks)
 import tests.conftest
-from tests.conftest import MockConfiguration
+from tests.conftest import MockGameObjectFactory, MockSystemFactory
 
 from graphicobjects import GraphicObject
 from geometrytransformation2d import Vector2D
-
-
-class MockGameObjectFactory:
-    """Mock factory for creating game objects in tests."""
-    
-    def create_starship_at_origin(self):
-        return GraphicObject(
-            x=0, y=0, 
-            vertexes_local=[Vector2D(10, 0), Vector2D(-5, -5), Vector2D(-5, 5)]
-        )
-
-
-class MockSystemFactory:
-    """Mock factory for creating system components in tests."""
-    
-    def __init__(self):
-        self._asteroid_generator = unittest.mock.MagicMock()
-        self._asteroid_generator.process = unittest.mock.MagicMock()
-        self._asteroid_generator.get_new_asteroid = unittest.mock.MagicMock(return_value=None)
-        
-        self._collision_handler = unittest.mock.MagicMock()
-        self._collision_handler.handle = unittest.mock.MagicMock()
-    
-    def create_asteroid_generator(self, world):
-        return self._asteroid_generator
-    
-    def create_collision_handler(self, world):
-        return self._collision_handler
-
 
 # Import World after mocks are set up
 from engines import World

@@ -18,36 +18,6 @@ from Main.graphicobjects import StarShip, Bullet, Asteroid
 from Main.geometrytransformation2d import Vector2D, Circle
 
 
-class MockConfig:
-    """Mock configuration for factory tests."""
-    
-    def __init__(self, config_dict=None):
-        self._config = config_dict or {}
-    
-    def get(self, key, default=None):
-        return self._config.get(key, default)
-    
-    def get_int(self, key, default=0):
-        value = self._config.get(key, default)
-        try:
-            return int(value)
-        except (ValueError, TypeError):
-            return default
-    
-    def get_float(self, key, default=0.0):
-        value = self._config.get(key, default)
-        try:
-            return float(value)
-        except (ValueError, TypeError):
-            return default
-    
-    def get_color(self, key, default=(255, 255, 255)):
-        return self._config.get(key, default)
-    
-    def get_vertexes(self, key, default=None):
-        return self._config.get(key, default)
-
-
 # --- SystemFactory Tests ---
 
 class SystemFactoryTests(unittest.TestCase):
@@ -55,7 +25,7 @@ class SystemFactoryTests(unittest.TestCase):
     
     def setUp(self):
         """Set up test fixtures."""
-        self.config = MockConfig({
+        self.config = MockConfiguration({
             'game.asteroid.spawn_countdown': 50,
             'game.asteroid.max_count': 5,
             'display.width': 800,
@@ -100,7 +70,7 @@ class SystemFactoryTests(unittest.TestCase):
     
     def test_get_fps_returns_default_when_not_configured(self):
         """get_fps() should return default when not configured."""
-        empty_config = MockConfig({})
+        empty_config = MockConfiguration({})
         factory = SystemFactory(empty_config)
         
         fps = factory.get_fps()
@@ -129,7 +99,7 @@ class GameObjectFactoryTests(unittest.TestCase):
     
     def setUp(self):
         """Set up test fixtures."""
-        self.config = MockConfig({
+        self.config = MockConfiguration({
             'game.starship.color': (255, 255, 255),
             'game.starship.reload_counter': 15,
             'game.bullet.speed': 200,
@@ -194,7 +164,7 @@ class PhysicsFactoryTests(unittest.TestCase):
     
     def setUp(self):
         """Set up test fixtures."""
-        self.config = MockConfig({
+        self.config = MockConfiguration({
             'physics.collision_threshold': 0.001,
             'test.vector': [10.5, 20.5],
         })
@@ -253,7 +223,7 @@ class PhysicsFactoryTests(unittest.TestCase):
     
     def test_get_collision_threshold_default(self):
         """get_collision_threshold() should return default when not configured."""
-        empty_config = MockConfig({})
+        empty_config = MockConfiguration({})
         factory = PhysicsFactory(empty_config)
         
         threshold = factory.get_collision_threshold()

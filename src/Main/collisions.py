@@ -1,3 +1,6 @@
+__all__ = ['CollisionInfo', 'CollisionHandler']
+
+
 class CollisionInfo(object):
     """ This class contains all the information about a collision
     """

@@ -1,6 +1,8 @@
 import constants
 from graphicobjects import Asteroid
 
+__all__ = ['AsteroidGenerator']
+
 
 class AsteroidGenerator:
     def __init__(self, world, initial_countdown, max_number_of_asteroid):

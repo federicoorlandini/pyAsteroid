@@ -4,6 +4,8 @@ import geometrytransformation2d
 from geometrytransformation2d import Vector2D, Circle
 from Infrastructure.interfaces.interfaces import IGameObject, IStarShip, IBullet, IAsteroid
 
+__all__ = ['GraphicObject', 'StarShip', 'Bullet', 'Asteroid']
+
 # -----------------------------------------------------------------
 class GraphicObject(IGameObject):
     """ GraphicObject: the base class for every object on the screen """

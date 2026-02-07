@@ -1,6 +1,9 @@
 import lookuptables
 import values
 
+__all__ = ['Vector2D', 'Circle', 'rotate', 'move_in_a_direction', 'translate',
+           'from_local_to_world_coordinates']
+
 class Vector2D(object):
     """ Thi class define a simple vector in the 2D world
     """
