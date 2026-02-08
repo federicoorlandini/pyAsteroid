@@ -344,5 +344,41 @@ class BulletCollisionTests(unittest.TestCase):
         self.assertNotIn(asteroid_id, mock_world.get_objects_list())
 
 
+class BackwardCompatibilityTests(unittest.TestCase):
+    """
+    Tests that old-style constructors still work.
+    
+    Migrated from step2_demo.py to ensure backward compatibility
+    is maintained as the DI system evolves.
+    """
+    
+    def test_starship_old_constructor_still_works(self):
+        """StarShip(x, y, color) without factories should still work."""
+        starship = StarShip(0, 0, (255, 255, 255))
+        
+        self.assertIsInstance(starship, StarShip)
+        self.assertEqual(starship.position.x, 0)
+        self.assertEqual(starship.position.y, 0)
+        self.assertIsNotNone(starship.object_vertexes)
+    
+    def test_bullet_old_constructor_still_works(self):
+        """Bullet(x, y, angle) without factories should still work."""
+        bullet = Bullet(0, 0, 0)
+        
+        self.assertIsInstance(bullet, Bullet)
+        self.assertEqual(bullet.position.x, 0)
+        self.assertEqual(bullet.head_angle, 0)
+        self.assertIsNotNone(bullet.object_vertexes)
+    
+    def test_asteroid_old_constructor_still_works(self):
+        """Asteroid(x, y, angle, speed) without factories should still work."""
+        asteroid = Asteroid(0, 0, 0, 10)
+        
+        self.assertIsInstance(asteroid, Asteroid)
+        self.assertEqual(asteroid.position.x, 0)
+        self.assertEqual(asteroid.speed, 10)
+        self.assertIsNotNone(asteroid.object_vertexes)
+
+
 if __name__ == "__main__":
     unittest.main()
